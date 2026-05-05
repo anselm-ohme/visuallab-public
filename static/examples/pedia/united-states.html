@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>United States — VisualPedia</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --accent:#3b82f6; --accent-2:#60a5fa; }
+  body { font-family:'Inter',system-ui,sans-serif; background:#0a0d1a; color:#e7eaf4; }
+  .display { font-family:'Space Grotesk',sans-serif; }
+  .glass { background:rgba(20,28,48,.55); backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,.08); }
+  .grad { background:linear-gradient(120deg,#60a5fa,#a78bfa); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .orb { position:fixed; border-radius:50%; filter:blur(120px); pointer-events:none; z-index:0; }
+  .stat-num { font-family:'Space Grotesk',sans-serif; font-weight:700; }
+  .stripe { background: repeating-linear-gradient(180deg, rgba(239,68,68,.12) 0 6px, transparent 6px 12px); }
+</style>
+</head>
+<body class="min-h-screen relative">
+<div class="orb" style="width:520px;height:520px;background:#3b82f6;top:-160px;right:-140px;opacity:.22"></div>
+<div class="orb" style="width:420px;height:420px;background:#ef4444;bottom:-180px;left:-140px;opacity:.16"></div>
+
+<div class="relative z-10 max-w-6xl mx-auto px-6 py-10 space-y-8">
+
+<header class="glass rounded-3xl p-8 md:p-10 relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-1/3 h-full stripe pointer-events-none"></div>
+  <div class="text-xs uppercase tracking-[0.3em] text-blue-300/80">Wikipedia · Most-read country article</div>
+  <h1 class="display text-5xl md:text-6xl font-bold mt-3 leading-tight">United <span class="grad">States</span></h1>
+  <p class="text-lg text-slate-300 mt-4 max-w-3xl">A federal republic of 50 states, a federal district, five major territories, and 326 Indian reservations spanning a continent — the world's largest economy and a defining cultural force of the modern era.</p>
+  <a href="https://en.wikipedia.org/wiki/United_States" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-400 text-white font-semibold transition">View on Wikipedia →</a>
+</header>
+
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-slate-400">Independence</div><div class="stat-num text-3xl mt-2 grad">4 July 1776</div><div class="text-xs text-slate-500 mt-1">From Great Britain</div></div>
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-slate-400">Population</div><div class="stat-num text-3xl mt-2 grad">335M</div><div class="text-xs text-slate-500 mt-1">3rd largest worldwide</div></div>
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-slate-400">GDP (nominal)</div><div class="stat-num text-3xl mt-2 grad">$28T</div><div class="text-xs text-slate-500 mt-1">~26% of world output</div></div>
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-slate-400">Area</div><div class="stat-num text-3xl mt-2 grad">9.83M km²</div><div class="text-xs text-slate-500 mt-1">3rd or 4th largest</div></div>
+</section>
+
+<section class="grid md:grid-cols-5 gap-4">
+  <div class="glass rounded-3xl p-6 md:col-span-3">
+    <h2 class="display text-2xl font-bold mb-1">Population growth, 1790-2020</h2>
+    <p class="text-sm text-slate-400 mb-4">From the first census of 3.9M to today's 335M residents.</p>
+    <canvas id="chart-pop" height="170"></canvas>
+  </div>
+  <div class="glass rounded-3xl p-6 md:col-span-2">
+    <h2 class="display text-2xl font-bold mb-3">Branches of government</h2>
+    <ul class="space-y-3 text-sm">
+      <li class="flex gap-3"><div class="w-1 rounded bg-blue-400 shrink-0"></div><div><div class="font-semibold">Legislative</div><div class="text-slate-400">Congress: 100 senators + 435 representatives</div></div></li>
+      <li class="flex gap-3"><div class="w-1 rounded bg-blue-400 shrink-0"></div><div><div class="font-semibold">Executive</div><div class="text-slate-400">President &amp; Vice President, 4-year terms</div></div></li>
+      <li class="flex gap-3"><div class="w-1 rounded bg-blue-400 shrink-0"></div><div><div class="font-semibold">Judicial</div><div class="text-slate-400">Supreme Court &amp; federal courts</div></div></li>
+    </ul>
+    <div class="mt-5 pt-5 border-t border-white/5">
+      <div class="text-xs uppercase tracking-widest text-slate-400">Constitution</div>
+      <div class="stat-num text-2xl mt-1 text-white">17 Sept 1787</div>
+      <div class="text-xs text-slate-500 mt-1">Oldest written national constitution still in force.</div>
+    </div>
+  </div>
+</section>
+
+<section class="glass rounded-3xl p-6 md:p-8">
+  <h2 class="display text-2xl font-bold mb-4">A 250-year arc</h2>
+  <div class="grid md:grid-cols-4 gap-4 text-sm">
+    <div class="rounded-2xl p-4 bg-slate-800/40 border border-white/5"><div class="text-blue-300 font-semibold">1776 · Founding</div><div class="text-slate-400 mt-1">Declaration of Independence; Revolutionary War follows.</div></div>
+    <div class="rounded-2xl p-4 bg-slate-800/40 border border-white/5"><div class="text-blue-300 font-semibold">1861 · Civil War</div><div class="text-slate-400 mt-1">Secession of 11 states; Union victory ends slavery.</div></div>
+    <div class="rounded-2xl p-4 bg-slate-800/40 border border-white/5"><div class="text-blue-300 font-semibold">1945 · Superpower</div><div class="text-slate-400 mt-1">WWII victory and the dawn of the nuclear age.</div></div>
+    <div class="rounded-2xl p-4 bg-slate-800/40 border border-white/5"><div class="text-blue-300 font-semibold">1969 · Apollo 11</div><div class="text-slate-400 mt-1">Neil Armstrong becomes the first human on the Moon.</div></div>
+    <div class="rounded-2xl p-4 bg-slate-800/40 border border-white/5"><div class="text-blue-300 font-semibold">1991 · Cold War ends</div><div class="text-slate-400 mt-1">Soviet collapse leaves the US as sole superpower.</div></div>
+    <div class="rounded-2xl p-4 bg-slate-800/40 border border-white/5"><div class="text-blue-300 font-semibold">2008 · Financial crisis</div><div class="text-slate-400 mt-1">Triggers a global recession; reshapes regulation.</div></div>
+    <div class="rounded-2xl p-4 bg-slate-800/40 border border-white/5"><div class="text-blue-300 font-semibold">2020s · AI &amp; reshaping</div><div class="text-slate-400 mt-1">US firms lead the modern AI revolution.</div></div>
+    <div class="rounded-2xl p-4 bg-slate-800/40 border border-white/5"><div class="text-blue-300 font-semibold">Today</div><div class="text-slate-400 mt-1">Largest economy, military, and cultural exporter.</div></div>
+  </div>
+</section>
+
+<section class="grid md:grid-cols-3 gap-4">
+  <div class="glass rounded-3xl p-6"><h3 class="display text-lg font-bold mb-2">Economy</h3><p class="text-sm text-slate-400 leading-relaxed">High-income, technology-driven service economy. Reserve currency status of the US dollar underpins global finance.</p></div>
+  <div class="glass rounded-3xl p-6"><h3 class="display text-lg font-bold mb-2">Culture</h3><p class="text-sm text-slate-400 leading-relaxed">Hollywood, Silicon Valley, and a vast university system make the US the world's largest exporter of cultural and digital products.</p></div>
+  <div class="glass rounded-3xl p-6"><h3 class="display text-lg font-bold mb-2">Diversity</h3><p class="text-sm text-slate-400 leading-relaxed">A nation of immigrants — over 40 million foreign-born residents and the most spoken languages of any country.</p></div>
+</section>
+
+<footer class="text-center text-xs text-slate-500 pt-2 pb-2">VisualPedia example · data sourced from Wikipedia and standard references</footer>
+
+</div>
+
+<script>
+new Chart(document.getElementById('chart-pop'), {
+  type:'line',
+  data:{
+    labels:['1790','1820','1850','1880','1910','1940','1970','2000','2020'],
+    datasets:[{
+      label:'Population (millions)',
+      data:[3.9,9.6,23.2,50.2,92.2,132.2,203.2,281.4,331.4],
+      borderColor:'#60a5fa', backgroundColor:'rgba(96,165,250,0.18)',
+      fill:true, tension:0.35, borderWidth:3, pointRadius:4, pointBackgroundColor:'#3b82f6'
+    }]
+  },
+  options:{
+    plugins:{ legend:{display:false} },
+    scales:{
+      x:{ ticks:{color:'#9aa3b8'}, grid:{color:'rgba(255,255,255,0.04)'}},
+      y:{ ticks:{color:'#9aa3b8'}, grid:{color:'rgba(255,255,255,0.06)'}}
+    }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Madame X (Madame Pierre Gautreau) — VisualArt</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { font-family:'Inter',system-ui,sans-serif; background:#0a0908; color:#e8e6e1; }
+  .serif { font-family:'Cormorant Garamond',Georgia,serif; }
+  .glass { background:rgba(20,17,15,.7); backdrop-filter:blur(14px); border:1px solid rgba(212,163,115,.18); }
+  .grad { background:linear-gradient(120deg,#dc2626,#fca5a5); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+  @keyframes heroIn { from { opacity:0; transform:scale(1.04); } to { opacity:1; transform:scale(1); } }
+  .pop { animation: fadeIn .8s ease backwards; }
+  .hero-img { animation: heroIn 1.4s ease both; }
+  .hairline { height:1px; background:linear-gradient(90deg,transparent,#dc2626,transparent); }
+  .accent-bar { background:linear-gradient(135deg,#dc2626,#fca5a5); }
+</style>
+</head>
+<body class="min-h-screen">
+
+<div class="max-w-5xl mx-auto px-6 md:px-10 py-10 space-y-12">
+
+  <!-- HERO -->
+  <header class="text-center pop" style="animation-delay:0s">
+    <div class="text-xs uppercase tracking-[0.4em] text-stone-400 mb-4">The Metropolitan Museum of Art · American Wing</div>
+    <div class="rounded-2xl overflow-hidden mb-8 bg-stone-900/60" style="border:1px solid rgba(212,163,115,.15)">
+      <img src="https://images.metmuseum.org/CRDImages/ad/original/DP-29006-001.jpg" alt="Madame X (Madame Pierre Gautreau)" class="hero-img w-full max-h-[78vh] object-contain bg-stone-950" loading="lazy" referrerpolicy="no-referrer" />
+    </div>
+    <h1 class="serif text-4xl md:text-6xl font-medium leading-tight"><span class="grad">Madame X (Madame Pierre Gautreau)</span></h1>
+    <div class="serif text-xl md:text-2xl text-stone-300 mt-3 italic">John Singer Sargent</div>
+    <div class="text-sm uppercase tracking-[0.3em] text-stone-400 mt-2">1883-84</div>
+    <a href="https://www.metmuseum.org/art/collection/search/12127" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-full accent-bar text-stone-900 font-semibold text-sm transition hover:scale-[1.02]">View on metmuseum.org →</a>
+  </header>
+
+  <div class="hairline"></div>
+
+  <!-- ABOUT -->
+  <section class="grid md:grid-cols-3 gap-10 pop" style="animation-delay:.15s">
+    <div class="md:col-span-2 space-y-5 serif text-lg leading-relaxed text-stone-200" style="font-weight:400">
+      <h2 class="text-3xl font-semibold mb-2 text-stone-100">About this work</h2>
+      <p>Sargent painted the famous American expatriate beauty Virginie Amélie Avegno Gautreau in 1883-84 not on commission, but because he believed her unusual chalk-white skin and aquiline profile would launch his career.</p>
+      <p>When the painting was unveiled at the 1884 Paris Salon, the original version showed one of the dress's jeweled straps slipping off her shoulder. Critics were appalled; the Gautreau family demanded its withdrawal. Sargent later repainted the strap into place — but his reputation in Paris was ruined and he moved to London.</p>
+      <p>Decades later, Sargent told a friend that this was 'the best thing I have done.' The Met purchased it in 1916, by which time Madame X had become a touchstone of late-19th-century portraiture.</p>
+    </div>
+    <aside class="space-y-4">
+      <div class="glass rounded-xl p-5">
+        <div class="text-xs uppercase tracking-[0.2em] text-stone-400">Medium</div>
+        <div class="serif text-lg text-stone-200 mt-1">Oil on canvas</div>
+      </div>
+      <div class="glass rounded-xl p-5">
+        <div class="text-xs uppercase tracking-[0.2em] text-stone-400">Dimensions</div>
+        <div class="serif text-lg text-stone-200 mt-1">208.6 × 109.9 cm (82 1/8 × 43 1/4 in.)</div>
+      </div>
+      <div class="glass rounded-xl p-5">
+        <div class="text-xs uppercase tracking-[0.2em] text-stone-400">Classification</div>
+        <div class="serif text-lg text-stone-200 mt-1">Paintings</div>
+      </div>
+      <div class="glass rounded-xl p-5">
+        <div class="text-xs uppercase tracking-[0.2em] text-stone-400">Credit line</div>
+        <div class="text-sm text-stone-300 mt-1 leading-relaxed">Arthur Hoppock Hearn Fund, 1916</div>
+      </div>
+    </aside>
+  </section>
+
+  <div class="hairline"></div>
+
+  <!-- ARTIST -->
+  <section class="pop" style="animation-delay:.25s">
+    <h2 class="serif text-3xl font-semibold mb-3 text-stone-100">About the artist</h2>
+    <p class="serif text-lg leading-relaxed text-stone-200 max-w-3xl">John Singer Sargent (1856-1925) was the leading portraitist of the Edwardian era. Born in Florence to American parents, he trained in Paris and worked between Paris, London, and Boston. He left more than 900 oil paintings and 2,000 watercolors.</p>
+  </section>
+
+  <div class="hairline"></div>
+
+  <!-- METADATA -->
+  <footer class="pt-2 pop" style="animation-delay:.35s">
+    <div class="flex flex-wrap gap-2 mb-4">
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(220,38,38,0.3); background:rgba(220,38,38,0.06)">Portraiture</span>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(220,38,38,0.3); background:rgba(220,38,38,0.06)">Belle Époque</span>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(220,38,38,0.3); background:rgba(220,38,38,0.06)">American Wing</span>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(220,38,38,0.3); background:rgba(220,38,38,0.06)">Sargent</span>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(220,38,38,0.3); background:rgba(220,38,38,0.06)">1884</span>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(220,38,38,0.3); background:rgba(220,38,38,0.06)">Open Access</span>
+    </div>
+    <div class="text-xs text-stone-500 text-center mt-8 leading-relaxed">
+      Hand-built example dashboard · the live tool produces dashboards like this from the Met API in real time.<br/>
+      Image and metadata via the Metropolitan Museum of Art Open Access program.
+    </div>
+  </footer>
+</div>
+</body>
+</html>

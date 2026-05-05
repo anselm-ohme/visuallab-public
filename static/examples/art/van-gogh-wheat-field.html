@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Wheat Field with Cypresses — VisualArt</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { font-family:'Inter',system-ui,sans-serif; background:#0a0908; color:#e8e6e1; }
+  .serif { font-family:'Cormorant Garamond',Georgia,serif; }
+  .glass { background:rgba(20,17,15,.7); backdrop-filter:blur(14px); border:1px solid rgba(212,163,115,.18); }
+  .grad { background:linear-gradient(120deg,#d4a373,#f4d4a8); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+  @keyframes heroIn { from { opacity:0; transform:scale(1.04); } to { opacity:1; transform:scale(1); } }
+  .pop { animation: fadeIn .8s ease backwards; }
+  .hero-img { animation: heroIn 1.4s ease both; }
+  .hairline { height:1px; background:linear-gradient(90deg,transparent,#d4a373,transparent); }
+  .accent-bar { background:linear-gradient(135deg,#d4a373,#f4d4a8); }
+</style>
+</head>
+<body class="min-h-screen">
+
+<div class="max-w-5xl mx-auto px-6 md:px-10 py-10 space-y-12">
+
+  <!-- HERO -->
+  <header class="text-center pop" style="animation-delay:0s">
+    <div class="text-xs uppercase tracking-[0.4em] text-stone-400 mb-4">The Metropolitan Museum of Art · European Paintings</div>
+    <div class="rounded-2xl overflow-hidden mb-8 bg-stone-900/60" style="border:1px solid rgba(212,163,115,.15)">
+      <img src="https://images.metmuseum.org/CRDImages/ep/original/DP-42549-001.jpg" alt="Wheat Field with Cypresses" class="hero-img w-full max-h-[78vh] object-contain bg-stone-950" loading="lazy" referrerpolicy="no-referrer" />
+    </div>
+    <h1 class="serif text-4xl md:text-6xl font-medium leading-tight"><span class="grad">Wheat Field with Cypresses</span></h1>
+    <div class="serif text-xl md:text-2xl text-stone-300 mt-3 italic">Vincent van Gogh</div>
+    <div class="text-sm uppercase tracking-[0.3em] text-stone-400 mt-2">1889</div>
+    <a href="https://www.metmuseum.org/art/collection/search/436535" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-full accent-bar text-stone-900 font-semibold text-sm transition hover:scale-[1.02]">View on metmuseum.org →</a>
+  </header>
+
+  <div class="hairline"></div>
+
+  <!-- ABOUT -->
+  <section class="grid md:grid-cols-3 gap-10 pop" style="animation-delay:.15s">
+    <div class="md:col-span-2 space-y-5 serif text-lg leading-relaxed text-stone-200" style="font-weight:400">
+      <h2 class="text-3xl font-semibold mb-2 text-stone-100">About this work</h2>
+      <p>Painted in late June or early July 1889, during Van Gogh's voluntary stay at the asylum of Saint-Paul-de-Mausole at Saint-Rémy-de-Provence, this canvas is one of his most beloved landscapes.</p>
+      <p>The dynamic, swirling brushwork that animates the cypresses, the rolling wheat and the rapidly moving clouds was Van Gogh's solution to a deeply held problem: how to render natural movement and emotion in static pigment.</p>
+      <p>There are three closely related Wheat Field with Cypresses paintings, of which this is the most finished. Van Gogh wrote to his brother Theo that the cypresses were 'always occupying my thoughts — it astonishes me that no one has yet done them as I see them'.</p>
+    </div>
+    <aside class="space-y-4">
+      <div class="glass rounded-xl p-5">
+        <div class="text-xs uppercase tracking-[0.2em] text-stone-400">Medium</div>
+        <div class="serif text-lg text-stone-200 mt-1">Oil on canvas</div>
+      </div>
+      <div class="glass rounded-xl p-5">
+        <div class="text-xs uppercase tracking-[0.2em] text-stone-400">Dimensions</div>
+        <div class="serif text-lg text-stone-200 mt-1">73 × 93.4 cm (28 7/8 × 36 3/4 in.)</div>
+      </div>
+      <div class="glass rounded-xl p-5">
+        <div class="text-xs uppercase tracking-[0.2em] text-stone-400">Classification</div>
+        <div class="serif text-lg text-stone-200 mt-1">Paintings</div>
+      </div>
+      <div class="glass rounded-xl p-5">
+        <div class="text-xs uppercase tracking-[0.2em] text-stone-400">Credit line</div>
+        <div class="text-sm text-stone-300 mt-1 leading-relaxed">Purchase, The Annenberg Foundation Gift, 1993</div>
+      </div>
+    </aside>
+  </section>
+
+  <div class="hairline"></div>
+
+  <!-- ARTIST -->
+  <section class="pop" style="animation-delay:.25s">
+    <h2 class="serif text-3xl font-semibold mb-3 text-stone-100">About the artist</h2>
+    <p class="serif text-lg leading-relaxed text-stone-200 max-w-3xl">Vincent van Gogh (1853-1890) painted just over 800 oil paintings in a career that lasted only ten years. He sold one in his lifetime. Today his works hold the highest auction records in art history. The Met's collection includes 17 of his paintings.</p>
+  </section>
+
+  <div class="hairline"></div>
+
+  <!-- METADATA -->
+  <footer class="pt-2 pop" style="animation-delay:.35s">
+    <div class="flex flex-wrap gap-2 mb-4">
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(212,163,115,0.3); background:rgba(212,163,115,0.06)">Post-Impressionism</span>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(212,163,115,0.3); background:rgba(212,163,115,0.06)">Saint-Rémy</span>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(212,163,115,0.3); background:rgba(212,163,115,0.06)">Landscape</span>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(212,163,115,0.3); background:rgba(212,163,115,0.06)">Cypresses</span>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(212,163,115,0.3); background:rgba(212,163,115,0.06)">1889</span>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(212,163,115,0.3); background:rgba(212,163,115,0.06)">Open Access</span>
+    </div>
+    <div class="text-xs text-stone-500 text-center mt-8 leading-relaxed">
+      Hand-built example dashboard · the live tool produces dashboards like this from the Met API in real time.<br/>
+      Image and metadata via the Metropolitan Museum of Art Open Access program.
+    </div>
+  </footer>
+</div>
+</body>
+</html>

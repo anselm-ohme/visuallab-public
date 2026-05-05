@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Adam Optimizer — VisualScholar</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family:'Inter',system-ui,sans-serif; background:#100a1a; color:#e9d5ff; }
+  .display { font-family:'Space Grotesk',sans-serif; }
+  .glass { background:rgba(28,12,52,.55); backdrop-filter:blur(18px); border:1px solid rgba(192,132,252,.22); }
+  .grad { background:linear-gradient(120deg,#c084fc,#22d3ee); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .orb { position:fixed; border-radius:50%; filter:blur(120px); pointer-events:none; z-index:0; opacity:.18 }
+  .stat-num { font-family:'Space Grotesk',sans-serif; font-weight:700; }
+  @keyframes drop { 0% { cy:30 } 100% { cy:170 } }
+  .ball { animation: drop 2.4s ease-in infinite; }
+</style>
+</head>
+<body class="min-h-screen relative">
+<div class="orb" style="width:520px;height:520px;background:#c084fc;top:-180px;right:-160px"></div>
+<div class="orb" style="width:420px;height:420px;background:#22d3ee;bottom:-200px;left:-140px"></div>
+
+<div class="relative z-10 max-w-6xl mx-auto px-6 py-10 space-y-8">
+
+<header class="glass rounded-3xl p-8 md:p-10">
+  <div class="text-xs uppercase tracking-[0.3em] text-fuchsia-300/80">VisualScholar · The default optimizer</div>
+  <h1 class="display text-4xl md:text-5xl font-bold mt-3 leading-tight">Adam: A Method for <span class="grad">Stochastic Optimization</span></h1>
+  <p class="text-base text-fuchsia-100/80 mt-4 max-w-3xl"><strong>Diederik P. Kingma &amp; Jimmy Ba</strong> · ICLR 2015 · arXiv:1412.6980</p>
+  <p class="text-base text-fuchsia-100/70 mt-2 max-w-3xl">Combined the per-parameter learning rates of AdaGrad/RMSProp with momentum, plus a principled bias correction. The result was a gradient-based optimizer so robust that it became the unspoken default for almost every modern deep-learning paper.</p>
+  <div class="mt-6 flex gap-3 flex-wrap">
+    <a href="https://arxiv.org/abs/1412.6980" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-fuchsia-500 hover:bg-fuchsia-400 text-white font-semibold transition">arXiv →</a>
+    <span class="px-3 py-1.5 rounded-full bg-fuchsia-900/40 border border-fuchsia-700/30 text-xs text-fuchsia-200">cs.LG</span>
+    <span class="px-3 py-1.5 rounded-full bg-fuchsia-900/40 border border-fuchsia-700/30 text-xs text-fuchsia-200">ICLR 2015</span>
+  </div>
+</header>
+
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-fuchsia-300/70">Citations</div><div class="stat-num text-3xl mt-2 grad">200k+</div><div class="text-xs text-fuchsia-100/60 mt-1">most cited optimizer paper</div></div>
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-fuchsia-300/70">Hyperparameters</div><div class="stat-num text-3xl mt-2 grad">3</div><div class="text-xs text-fuchsia-100/60 mt-1">α, β₁, β₂</div></div>
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-fuchsia-300/70">Default LR</div><div class="stat-num text-3xl mt-2 grad">10⁻³</div><div class="text-xs text-fuchsia-100/60 mt-1">"works for almost everything"</div></div>
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-fuchsia-300/70">Frameworks</div><div class="stat-num text-3xl mt-2 grad">all</div><div class="text-xs text-fuchsia-100/60 mt-1">torch.optim.Adam · tf.keras.optimizers.Adam</div></div>
+</section>
+
+<section class="grid md:grid-cols-2 gap-4">
+  <div class="glass rounded-3xl p-6">
+    <h3 class="display text-xl font-bold mb-3">The four-line update</h3>
+    <div class="rounded-xl p-4 bg-fuchsia-900/20 border border-fuchsia-700/20">
+      <div class="text-xs uppercase tracking-widest text-fuchsia-300 mb-1">First moment (mean of gradients)</div>
+      <div class="text-lg">$$m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t$$</div>
+    </div>
+    <div class="rounded-xl p-4 bg-fuchsia-900/20 border border-fuchsia-700/20 mt-3">
+      <div class="text-xs uppercase tracking-widest text-fuchsia-300 mb-1">Second moment (uncentered variance)</div>
+      <div class="text-lg">$$v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^{\,2}$$</div>
+    </div>
+    <div class="rounded-xl p-4 bg-fuchsia-900/20 border border-fuchsia-700/20 mt-3">
+      <div class="text-xs uppercase tracking-widest text-fuchsia-300 mb-1">Bias-corrected estimates</div>
+      <div class="text-lg">$$\hat m_t = m_t/(1-\beta_1^{\,t}),\quad \hat v_t = v_t/(1-\beta_2^{\,t})$$</div>
+    </div>
+    <div class="rounded-xl p-4 bg-fuchsia-900/20 border border-fuchsia-700/20 mt-3">
+      <div class="text-xs uppercase tracking-widest text-fuchsia-300 mb-1">Parameter update</div>
+      <div class="text-lg">$$\theta_t = \theta_{t-1} - \alpha\,\hat m_t / (\sqrt{\hat v_t}+\epsilon)$$</div>
+    </div>
+  </div>
+  <div class="glass rounded-3xl p-6">
+    <h3 class="display text-xl font-bold mb-3">Why Adam wins</h3>
+    <ul class="space-y-3 text-sm">
+      <li class="rounded-xl p-3 bg-fuchsia-900/20 border border-fuchsia-700/20"><div class="font-semibold text-fuchsia-200">Per-parameter step size</div><div class="text-fuchsia-100/70">Sparse features get larger updates; dense features get smaller ones.</div></li>
+      <li class="rounded-xl p-3 bg-fuchsia-900/20 border border-fuchsia-700/20"><div class="font-semibold text-fuchsia-200">Momentum baked in</div><div class="text-fuchsia-100/70">Smooths out noisy mini-batch gradients.</div></li>
+      <li class="rounded-xl p-3 bg-fuchsia-900/20 border border-fuchsia-700/20"><div class="font-semibold text-fuchsia-200">Bias correction</div><div class="text-fuchsia-100/70">First few steps are unbiased — important for sparse updates.</div></li>
+      <li class="rounded-xl p-3 bg-fuchsia-900/20 border border-fuchsia-700/20"><div class="font-semibold text-fuchsia-200">Robust default</div><div class="text-fuchsia-100/70">$\alpha=10^{-3},\ \beta_1=0.9,\ \beta_2=0.999$ "just works" for most problems.</div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="glass rounded-3xl p-6 md:p-8">
+  <h2 class="display text-2xl font-bold mb-2">Convergence vs SGD &amp; AdaGrad (illustrative)</h2>
+  <p class="text-sm text-fuchsia-100/60 mb-4">Training-loss curves on a synthetic sparse problem — showing Adam's faster, smoother descent.</p>
+  <canvas id="chart-conv" height="170"></canvas>
+</section>
+
+<section class="glass rounded-3xl p-6 md:p-8">
+  <h2 class="display text-2xl font-bold mb-3">Variants in everyday use</h2>
+  <div class="grid md:grid-cols-4 gap-3 text-sm">
+    <div class="rounded-xl p-3 bg-fuchsia-900/20 border border-fuchsia-700/20"><div class="font-semibold text-fuchsia-200">AdamW (2017)</div><div class="text-fuchsia-100/70">Decoupled weight decay — the LLM training default.</div></div>
+    <div class="rounded-xl p-3 bg-fuchsia-900/20 border border-fuchsia-700/20"><div class="font-semibold text-fuchsia-200">AMSGrad (2018)</div><div class="text-fuchsia-100/70">Fixes a non-convergence corner case.</div></div>
+    <div class="rounded-xl p-3 bg-fuchsia-900/20 border border-fuchsia-700/20"><div class="font-semibold text-fuchsia-200">Nadam</div><div class="text-fuchsia-100/70">Adam + Nesterov momentum.</div></div>
+    <div class="rounded-xl p-3 bg-fuchsia-900/20 border border-fuchsia-700/20"><div class="font-semibold text-fuchsia-200">Lion (2023)</div><div class="text-fuchsia-100/70">Sign-based competitor; cheaper memory.</div></div>
+  </div>
+</section>
+
+<footer class="text-center text-xs text-fuchsia-300/50 pt-2 pb-2">VisualScholar example · facts from arXiv 1412.6980 and standard references</footer>
+
+</div>
+
+<script>
+const xs = Array.from({length:50},(_,i)=>i+1);
+const sgd = xs.map(i=> 1.3 * Math.exp(-i/35) + 0.05*Math.sin(i/4));
+const ada = xs.map(i=> 1.2 * Math.exp(-i/22) + 0.04);
+const adam = xs.map(i=> 1.2 * Math.exp(-i/14));
+new Chart(document.getElementById('chart-conv'), {
+  type:'line',
+  data:{ labels: xs, datasets: [
+    { label:'SGD', data:sgd, borderColor:'#94a3b8', backgroundColor:'transparent', borderWidth:2, pointRadius:0, tension:.3 },
+    { label:'AdaGrad', data:ada, borderColor:'#22d3ee', backgroundColor:'transparent', borderWidth:2, pointRadius:0, tension:.3 },
+    { label:'Adam', data:adam, borderColor:'#c084fc', backgroundColor:'rgba(192,132,252,.15)', fill:true, borderWidth:3, pointRadius:0, tension:.3 },
+  ]},
+  options:{
+    plugins:{ legend:{ labels:{color:'#e9d5ff'}}},
+    scales:{
+      x:{ ticks:{color:'#e9d5ff'}, grid:{color:'rgba(255,255,255,0.04)'}, title:{display:true,text:'Iteration',color:'#e9d5ff'}},
+      y:{ ticks:{color:'#e9d5ff'}, grid:{color:'rgba(255,255,255,0.06)'}, title:{display:true,text:'Training loss',color:'#e9d5ff'}}
+    }
+  }
+});
+</script>
+</body>
+</html>

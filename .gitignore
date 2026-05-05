@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+.idea/
+.vscode/
+# Runtime-generated shareable dashboards (saved to disk by /api/share)
+data/
+# Temp commit-message scratch file used by the agent
+.git_commit_msg.txt
+

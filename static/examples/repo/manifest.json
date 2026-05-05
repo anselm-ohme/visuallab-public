@@ -1,0 +1,84 @@
+{
+  "items": [
+    {
+      "slug": "facebook-react",
+      "title": "facebook/react",
+      "blurb": "A declarative, component-based JavaScript library for building user interfaces. The de-facto frontend…",
+      "accent": "#61dafb",
+      "year": 2013,
+      "authors": "JavaScript"
+    },
+    {
+      "slug": "huggingface-transformers",
+      "title": "huggingface/transformers",
+      "blurb": "State-of-the-art Machine Learning for PyTorch, TensorFlow, and JAX. Provides thousands of pre-trained models…",
+      "accent": "#fbbf24",
+      "year": 2018,
+      "authors": "Python"
+    },
+    {
+      "slug": "ggerganov-llama-cpp",
+      "title": "ggerganov/llama.cpp",
+      "blurb": "LLM inference in pure C/C++. Runs LLaMA-family and many other open models on CPU (and Apple Silicon, AMD,…",
+      "accent": "#a78bfa",
+      "year": 2023,
+      "authors": "C++"
+    },
+    {
+      "slug": "vercel-next-js",
+      "title": "vercel/next.js",
+      "blurb": "The React framework for production. Adds routing, server-side rendering, image optimisation, and an end-to-…",
+      "accent": "#ffffff",
+      "year": 2016,
+      "authors": "TypeScript"
+    },
+    {
+      "slug": "ollama-ollama",
+      "title": "ollama/ollama",
+      "blurb": "Get up and running with Llama 3, Mistral, Gemma, Phi and dozens of other open LLMs locally. One install, one…",
+      "accent": "#22d3ee",
+      "year": 2023,
+      "authors": "Go"
+    },
+    {
+      "slug": "openai-whisper",
+      "title": "openai/whisper",
+      "blurb": "Robust speech recognition via large-scale weak supervision. A general-purpose, multilingual ASR model that…",
+      "accent": "#34d399",
+      "year": 2022,
+      "authors": "Python"
+    },
+    {
+      "slug": "tailwindlabs-tailwindcss",
+      "title": "tailwindlabs/tailwindcss",
+      "blurb": "A utility-first CSS framework for rapidly building modern websites without ever leaving your HTML. Compose…",
+      "accent": "#06b6d4",
+      "year": 2017,
+      "authors": "TypeScript"
+    },
+    {
+      "slug": "denoland-deno",
+      "title": "denoland/deno",
+      "blurb": "A modern, all-in-one runtime for JavaScript and TypeScript. Built in Rust, powered by V8, with secure-by-…",
+      "accent": "#fb923c",
+      "year": 2018,
+      "authors": "Rust"
+    },
+    {
+      "slug": "pytorch-pytorch",
+      "title": "pytorch/pytorch",
+      "blurb": "Tensors and dynamic neural networks in Python with strong GPU acceleration. The default deep-learning…",
+      "accent": "#f97316",
+      "year": 2016,
+      "authors": "Python"
+    },
+    {
+      "slug": "langchain-ai-langchain",
+      "title": "langchain-ai/langchain",
+      "blurb": "Building applications with LLMs through composability. A framework for chaining models, prompts, retrievers,…",
+      "accent": "#10b981",
+      "year": 2022,
+      "authors": "Python"
+    }
+  ]
+}

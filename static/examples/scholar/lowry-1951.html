@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Lowry 1951 — VisualScholar</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --accent:#22d3ee; }
+  body { font-family:'Inter',system-ui,sans-serif; background:#06141a; color:#e0f2fe; }
+  .display { font-family:'Space Grotesk',sans-serif; }
+  .glass { background:rgba(8,40,52,.55); backdrop-filter:blur(18px); border:1px solid rgba(34,211,238,.18); }
+  .grad { background:linear-gradient(120deg,#22d3ee,#a78bfa); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .orb { position:fixed; border-radius:50%; filter:blur(120px); pointer-events:none; z-index:0; opacity:.18 }
+  .stat-num { font-family:'Space Grotesk',sans-serif; font-weight:700; }
+  .step-card { transition:transform .25s; }
+  .step-card:hover { transform:translateY(-3px); }
+  @keyframes flow { 0% { stroke-dashoffset:200; } 100% { stroke-dashoffset:0; } }
+  .flow-line { stroke-dasharray:6 6; animation: flow 4s linear infinite; }
+  @keyframes pulse-mol { 0%,100% { r:14; opacity:.85; } 50% { r:18; opacity:1; } }
+  .mol { animation: pulse-mol 2.6s ease-in-out infinite; }
+</style>
+</head>
+<body class="min-h-screen relative">
+<div class="orb" style="width:520px;height:520px;background:#22d3ee;top:-180px;right:-160px"></div>
+<div class="orb" style="width:420px;height:420px;background:#a78bfa;bottom:-200px;left:-140px"></div>
+
+<div class="relative z-10 max-w-6xl mx-auto px-6 py-10 space-y-8">
+
+<header class="glass rounded-3xl p-8 md:p-10">
+  <div class="text-xs uppercase tracking-[0.3em] text-cyan-300/80">VisualScholar · Most-cited paper in history</div>
+  <h1 class="display text-4xl md:text-5xl font-bold mt-3 leading-tight">Protein Measurement with the<br><span class="grad">Folin Phenol Reagent</span></h1>
+  <p class="text-base text-cyan-100/80 mt-4 max-w-3xl"><strong>Lowry, Rosebrough, Farr &amp; Randall</strong> · <em>J. Biol. Chem.</em> 193:265-275 · 1951</p>
+  <p class="text-base text-cyan-100/70 mt-2 max-w-3xl">A simple, sensitive, two-step colorimetric assay for measuring protein concentration. Quietly published, rarely cited in its first decade — and now with more than <strong>310,000 citations</strong>, the most-cited scientific paper of all time.</p>
+  <div class="mt-6 flex gap-3 flex-wrap">
+    <a href="https://www.jbc.org/article/S0021-9258(19)52451-6/fulltext" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cyan-500 hover:bg-cyan-400 text-stone-900 font-semibold transition">Open paper →</a>
+    <span class="px-3 py-1.5 rounded-full bg-cyan-900/40 border border-cyan-700/30 text-xs text-cyan-200">Biochemistry</span>
+    <span class="px-3 py-1.5 rounded-full bg-cyan-900/40 border border-cyan-700/30 text-xs text-cyan-200">Method paper</span>
+  </div>
+</header>
+
+<section class="glass rounded-3xl p-6 md:p-8">
+  <h2 class="display text-2xl font-bold mb-2">TL;DR</h2>
+  <p class="text-cyan-100/80 leading-relaxed">A protein sample reacts first with copper(II) ions in alkaline solution, then with the Folin-Ciocalteu (phenol) reagent. The resulting deep-blue colour is read at 750 nm and converted to a protein concentration. Cheap, sensitive down to a few μg, and adopted by virtually every wet lab in the second half of the 20th century.</p>
+</section>
+
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-cyan-300/70">Citations</div><div class="stat-num text-3xl mt-2 grad">310,000+</div><div class="text-xs text-cyan-100/60 mt-1">Most cited paper ever</div></div>
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-cyan-300/70">Sensitivity</div><div class="stat-num text-3xl mt-2 grad">~5 μg</div><div class="text-xs text-cyan-100/60 mt-1">100× more than biuret</div></div>
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-cyan-300/70">Read at</div><div class="stat-num text-3xl mt-2 grad">750 nm</div><div class="text-xs text-cyan-100/60 mt-1">deep blue absorbance</div></div>
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-cyan-300/70">Reagents</div><div class="stat-num text-3xl mt-2 grad">2</div><div class="text-xs text-cyan-100/60 mt-1">copper-tartrate + Folin</div></div>
+</section>
+
+<!-- ANIMATED METHODOLOGY -->
+<section class="glass rounded-3xl p-6 md:p-8">
+  <h2 class="display text-2xl font-bold mb-2">How it works</h2>
+  <p class="text-sm text-cyan-100/60 mb-6">Two reactions in series produce a colour proportional to protein concentration.</p>
+
+  <svg viewBox="0 0 880 220" class="w-full h-48">
+    <!-- step 1 -->
+    <g transform="translate(40,40)">
+      <rect width="180" height="120" rx="14" fill="rgba(34,211,238,0.12)" stroke="#22d3ee" stroke-width="1.5"/>
+      <text x="90" y="28" text-anchor="middle" fill="#22d3ee" font-family="Space Grotesk" font-size="13" font-weight="700">Step 1 · Biuret</text>
+      <text x="90" y="56" text-anchor="middle" fill="#e0f2fe" font-size="11">protein + Cu²⁺ / OH⁻</text>
+      <circle cx="55" cy="92" r="14" fill="#a78bfa" class="mol"/>
+      <circle cx="125" cy="92" r="10" fill="#22d3ee" class="mol" style="animation-delay:.4s"/>
+      <text x="90" y="116" text-anchor="middle" fill="#7dd3fc" font-size="10">Cu-protein complex</text>
+    </g>
+    <!-- arrow -->
+    <line x1="230" y1="100" x2="320" y2="100" stroke="#22d3ee" stroke-width="2" class="flow-line" marker-end="url(#arr)"/>
+    <!-- step 2 -->
+    <g transform="translate(330,40)">
+      <rect width="180" height="120" rx="14" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1.5"/>
+      <text x="90" y="28" text-anchor="middle" fill="#a78bfa" font-family="Space Grotesk" font-size="13" font-weight="700">Step 2 · Folin</text>
+      <text x="90" y="56" text-anchor="middle" fill="#e0f2fe" font-size="11">+ phenol reagent</text>
+      <circle cx="55" cy="92" r="14" fill="#3b82f6" class="mol" style="animation-delay:.7s"/>
+      <circle cx="125" cy="92" r="10" fill="#a78bfa" class="mol" style="animation-delay:.3s"/>
+      <text x="90" y="116" text-anchor="middle" fill="#c4b5fd" font-size="10">reduced → blue colour</text>
+    </g>
+    <line x1="520" y1="100" x2="610" y2="100" stroke="#a78bfa" stroke-width="2" class="flow-line" marker-end="url(#arr)"/>
+    <!-- step 3 -->
+    <g transform="translate(620,40)">
+      <rect width="220" height="120" rx="14" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="110" y="28" text-anchor="middle" fill="#38bdf8" font-family="Space Grotesk" font-size="13" font-weight="700">Step 3 · Read at 750 nm</text>
+      <line x1="20" y1="92" x2="200" y2="92" stroke="#38bdf8" stroke-width="2"/>
+      <circle cx="110" cy="92" r="22" fill="#1d4ed8" opacity=".85"/>
+      <circle cx="110" cy="92" r="10" fill="#60a5fa"/>
+      <text x="110" y="116" text-anchor="middle" fill="#7dd3fc" font-size="10">absorbance ∝ [protein]</text>
+    </g>
+    <defs>
+      <marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+        <path d="M0,0 L9,5 L0,10 Z" fill="#22d3ee"/>
+      </marker>
+    </defs>
+  </svg>
+</section>
+
+<section class="grid md:grid-cols-2 gap-4">
+  <div class="glass rounded-3xl p-6">
+    <h2 class="display text-2xl font-bold mb-1">Citations have never stopped accumulating</h2>
+    <p class="text-sm text-cyan-100/60 mb-4">Cumulative citations to Lowry et al. (1951), in thousands.</p>
+    <canvas id="chart-cites" height="180"></canvas>
+  </div>
+  <div class="glass rounded-3xl p-6">
+    <h2 class="display text-2xl font-bold mb-3">Why so heavily cited?</h2>
+    <ul class="space-y-3 text-sm">
+      <li class="rounded-xl p-3 bg-cyan-900/20 border border-cyan-700/20"><div class="font-semibold text-cyan-200">Universal need</div><div class="text-cyan-100/70">Quantifying protein is the first step in nearly every biochemistry experiment.</div></li>
+      <li class="rounded-xl p-3 bg-cyan-900/20 border border-cyan-700/20"><div class="font-semibold text-cyan-200">Cheap &amp; simple</div><div class="text-cyan-100/70">Two reagents, basic glassware, a colorimeter — nothing exotic.</div></li>
+      <li class="rounded-xl p-3 bg-cyan-900/20 border border-cyan-700/20"><div class="font-semibold text-cyan-200">Sensitive</div><div class="text-cyan-100/70">Detects μg-level protein, far below the older biuret method.</div></li>
+      <li class="rounded-xl p-3 bg-cyan-900/20 border border-cyan-700/20"><div class="font-semibold text-cyan-200">Citation custom</div><div class="text-cyan-100/70">Every paper using the assay cited Lowry — for decades.</div></li>
+    </ul>
+  </div>
+</section>
+
+<footer class="text-center text-xs text-cyan-300/50 pt-2 pb-2">VisualScholar example · facts from Wikipedia, J. Biol. Chem. and citation indices</footer>
+
+</div>
+
+<script>
+new Chart(document.getElementById('chart-cites'), {
+  type:'line',
+  data:{
+    labels:['1951','1960','1970','1980','1990','2000','2010','2020','2024'],
+    datasets:[{
+      label:'Cumulative citations (thousands)',
+      data:[0,5,40,110,170,225,275,300,310],
+      borderColor:'#22d3ee', backgroundColor:'rgba(34,211,238,0.18)',
+      fill:true, tension:0.32, borderWidth:3, pointRadius:4, pointBackgroundColor:'#0ea5e9'
+    }]
+  },
+  options:{
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ ticks:{color:'#a5f3fc'}, grid:{color:'rgba(255,255,255,0.04)'}},
+      y:{ ticks:{color:'#a5f3fc'}, grid:{color:'rgba(255,255,255,0.06)'}}
+    }
+  }
+});
+</script>
+</body>
+</html>

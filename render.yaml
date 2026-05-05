@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: visuallab
+    runtime: python
+    # Starter plan: no cold-start sleep; required to attach the persistent
+    # disk below. ~$7/mo at the time this file was last updated.
+    plan: starter
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    # Long worker timeout so streamed LLM responses (30s–5min) aren't killed.
+    # Single worker keeps memory low; threads handle concurrency.
+    startCommand: "gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 600"
+    healthCheckPath: /
+    # Persistent disk for shareable dashboards: survives redeploys, restarts,
+    # and instance moves. ~$0.25/mo for 1 GB. Mounted at /data; the app's
+    # SHARE_DIR env var below points at /data/shared.
+    disk:
+      name: visuallab-shares
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"
+      - key: NVIDIA_API_KEY
+        sync: false
+      - key: NVIDIA_MODEL
+        value: "z-ai/glm4.7"
+      - key: NVIDIA_TIMEOUT
+        value: "300"
+      - key: SEMANTIC_SCHOLAR_API_KEY
+        sync: false
+      - key: SEMANTIC_SCHOLAR_RATE_LIMIT
+        value: "1.0"
+      - key: WIKI_USER_AGENT
+        sync: false
+      - key: FLASK_DEBUG
+        value: "0"
+      # Persist /api/share output on the disk above so /d/<slug> links keep
+      # working across redeploys. Code falls back to ./data/shared/ if unset.
+      - key: SHARE_DIR
+        value: "/data/shared"

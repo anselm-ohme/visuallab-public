@@ -1,0 +1,14 @@
+{
+  "items": [
+    { "slug": "lowry-1951", "title": "Protein Measurement with the Folin Phenol Reagent", "authors": "Lowry, Rosebrough, Farr, Randall", "year": 1951, "blurb": "The most-cited paper in scientific history (~310,000+ citations)", "accent": "#22d3ee" },
+    { "slug": "watson-crick-1953", "title": "Molecular Structure of Nucleic Acids", "authors": "Watson & Crick", "year": 1953, "blurb": "The DNA double-helix · 1962 Nobel Prize", "accent": "#a78bfa" },
+    { "slug": "shannon-1948", "title": "A Mathematical Theory of Communication", "authors": "Claude E. Shannon", "year": 1948, "blurb": "Founded information theory · invented the bit", "accent": "#34d399" },
+    { "slug": "einstein-1905", "title": "On the Electrodynamics of Moving Bodies", "authors": "Albert Einstein", "year": 1905, "blurb": "Special relativity · the Annus Mirabilis paper", "accent": "#fb7185" },
+    { "slug": "vaswani-2017", "title": "Attention Is All You Need", "authors": "Vaswani et al.", "year": 2017, "blurb": "The Transformer · foundation of modern LLMs", "accent": "#60a5fa" },
+    { "slug": "he-2015", "title": "Deep Residual Learning for Image Recognition", "authors": "He, Zhang, Ren, Sun", "year": 2015, "blurb": "ResNet · won ImageNet 2015 with 152 layers", "accent": "#f472b6" },
+    { "slug": "krizhevsky-2012", "title": "ImageNet Classification with Deep CNNs", "authors": "Krizhevsky, Sutskever, Hinton", "year": 2012, "blurb": "AlexNet · ignited the deep-learning revolution", "accent": "#fbbf24" },
+    { "slug": "kingma-2014-adam", "title": "Adam: A Method for Stochastic Optimization", "authors": "Kingma & Ba", "year": 2014, "blurb": "The default optimizer of modern deep learning", "accent": "#c084fc" },
+    { "slug": "devlin-2018-bert", "title": "BERT: Pre-training of Deep Bidirectional Transformers", "authors": "Devlin et al.", "year": 2018, "blurb": "Bidirectional pre-training that reshaped NLP", "accent": "#2dd4bf" },
+    { "slug": "lecun-2015-deeplearning", "title": "Deep Learning (Nature review)", "authors": "LeCun, Bengio, Hinton", "year": 2015, "blurb": "Definitive Nature review by the three Turing-Award laureates", "accent": "#facc15" }
+  ]
+}

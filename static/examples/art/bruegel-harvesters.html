@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>The Harvesters — VisualArt</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { font-family:'Inter',system-ui,sans-serif; background:#0a0908; color:#e8e6e1; }
+  .serif { font-family:'Cormorant Garamond',Georgia,serif; }
+  .glass { background:rgba(20,17,15,.7); backdrop-filter:blur(14px); border:1px solid rgba(212,163,115,.18); }
+  .grad { background:linear-gradient(120deg,#ca8a04,#fbbf24); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+  @keyframes heroIn { from { opacity:0; transform:scale(1.04); } to { opacity:1; transform:scale(1); } }
+  .pop { animation: fadeIn .8s ease backwards; }
+  .hero-img { animation: heroIn 1.4s ease both; }
+  .hairline { height:1px; background:linear-gradient(90deg,transparent,#ca8a04,transparent); }
+  .accent-bar { background:linear-gradient(135deg,#ca8a04,#fbbf24); }
+</style>
+</head>
+<body class="min-h-screen">
+
+<div class="max-w-5xl mx-auto px-6 md:px-10 py-10 space-y-12">
+
+  <!-- HERO -->
+  <header class="text-center pop" style="animation-delay:0s">
+    <div class="text-xs uppercase tracking-[0.4em] text-stone-400 mb-4">The Metropolitan Museum of Art · European Paintings</div>
+    <div class="rounded-2xl overflow-hidden mb-8 bg-stone-900/60" style="border:1px solid rgba(212,163,115,.15)">
+      <img src="https://images.metmuseum.org/CRDImages/ep/original/DP119115.jpg" alt="The Harvesters" class="hero-img w-full max-h-[78vh] object-contain bg-stone-950" loading="lazy" referrerpolicy="no-referrer" />
+    </div>
+    <h1 class="serif text-4xl md:text-6xl font-medium leading-tight"><span class="grad">The Harvesters</span></h1>
+    <div class="serif text-xl md:text-2xl text-stone-300 mt-3 italic">Pieter Bruegel the Elder</div>
+    <div class="text-sm uppercase tracking-[0.3em] text-stone-400 mt-2">1565</div>
+    <a href="https://www.metmuseum.org/art/collection/search/435809" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-full accent-bar text-stone-900 font-semibold text-sm transition hover:scale-[1.02]">View on metmuseum.org →</a>
+  </header>
+
+  <div class="hairline"></div>
+
+  <!-- ABOUT -->
+  <section class="grid md:grid-cols-3 gap-10 pop" style="animation-delay:.15s">
+    <div class="md:col-span-2 space-y-5 serif text-lg leading-relaxed text-stone-200" style="font-weight:400">
+      <h2 class="text-3xl font-semibold mb-2 text-stone-100">About this work</h2>
+      <p>Painted in 1565, The Harvesters is one of six (originally probably twelve) panels Bruegel made depicting different seasons of the year. Five survive; this one represents August, the ripening of summer.</p>
+      <p>Bruegel was the first European painter to make peasants the central subject of monumental art rather than incidental figures. The harvest is shown with humanity, humor, and a complete absence of moralising.</p>
+      <p>The Met acquired the painting in 1919 for what was then the colossal sum of $50,000. It is widely considered one of the greatest paintings of the Northern Renaissance and one of the Met's signature European works.</p>
+    </div>
+    <aside class="space-y-4">
+      <div class="glass rounded-xl p-5">
+        <div class="text-xs uppercase tracking-[0.2em] text-stone-400">Medium</div>
+        <div class="serif text-lg text-stone-200 mt-1">Oil on wood</div>
+      </div>
+      <div class="glass rounded-xl p-5">
+        <div class="text-xs uppercase tracking-[0.2em] text-stone-400">Dimensions</div>
+        <div class="serif text-lg text-stone-200 mt-1">119 × 162 cm (46 7/8 × 63 3/4 in.)</div>
+      </div>
+      <div class="glass rounded-xl p-5">
+        <div class="text-xs uppercase tracking-[0.2em] text-stone-400">Classification</div>
+        <div class="serif text-lg text-stone-200 mt-1">Paintings</div>
+      </div>
+      <div class="glass rounded-xl p-5">
+        <div class="text-xs uppercase tracking-[0.2em] text-stone-400">Credit line</div>
+        <div class="text-sm text-stone-300 mt-1 leading-relaxed">Rogers Fund, 1919</div>
+      </div>
+    </aside>
+  </section>
+
+  <div class="hairline"></div>
+
+  <!-- ARTIST -->
+  <section class="pop" style="animation-delay:.25s">
+    <h2 class="serif text-3xl font-semibold mb-3 text-stone-100">About the artist</h2>
+    <p class="serif text-lg leading-relaxed text-stone-200 max-w-3xl">Pieter Bruegel the Elder (c.1525-1569) was the most important Flemish painter of the 16th century and the founder of a multi-generational artistic dynasty. He painted only about 45 surviving panel paintings; the Met owns three.</p>
+  </section>
+
+  <div class="hairline"></div>
+
+  <!-- METADATA -->
+  <footer class="pt-2 pop" style="animation-delay:.35s">
+    <div class="flex flex-wrap gap-2 mb-4">
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(202,138,4,0.3); background:rgba(202,138,4,0.06)">Northern Renaissance</span>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(202,138,4,0.3); background:rgba(202,138,4,0.06)">Flemish</span>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(202,138,4,0.3); background:rgba(202,138,4,0.06)">Bruegel</span>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(202,138,4,0.3); background:rgba(202,138,4,0.06)">Harvest</span>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(202,138,4,0.3); background:rgba(202,138,4,0.06)">1565</span>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400 px-3 py-1.5 rounded-full" style="border:1px solid rgba(202,138,4,0.3); background:rgba(202,138,4,0.06)">Open Access</span>
+    </div>
+    <div class="text-xs text-stone-500 text-center mt-8 leading-relaxed">
+      Hand-built example dashboard · the live tool produces dashboards like this from the Met API in real time.<br/>
+      Image and metadata via the Metropolitan Museum of Art Open Access program.
+    </div>
+  </footer>
+</div>
+</body>
+</html>

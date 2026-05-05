@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Michael Jackson — VisualPedia</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family:'Inter',system-ui,sans-serif; background:#100b03; color:#fde68a; }
+  .display { font-family:'Space Grotesk',sans-serif; }
+  .glass { background:rgba(40,28,8,.55); backdrop-filter:blur(18px); border:1px solid rgba(245,158,11,.2); }
+  .grad { background:linear-gradient(120deg,#f59e0b,#fbbf24); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .orb { position:fixed; border-radius:50%; filter:blur(120px); pointer-events:none; z-index:0; }
+  .stat-num { font-family:'Space Grotesk',sans-serif; font-weight:700; }
+  @keyframes pulse-soft { 0%,100% { transform:scale(1); opacity:.85; } 50% { transform:scale(1.04); opacity:1; } }
+  .pulse { animation: pulse-soft 2.5s ease-in-out infinite; }
+</style>
+</head>
+<body class="min-h-screen relative">
+<div class="orb" style="width:540px;height:540px;background:#f59e0b;top:-180px;right:-160px;opacity:.18"></div>
+<div class="orb" style="width:420px;height:420px;background:#facc15;bottom:-200px;left:-140px;opacity:.18"></div>
+
+<div class="relative z-10 max-w-6xl mx-auto px-6 py-10 space-y-8">
+
+<header class="glass rounded-3xl p-8 md:p-10">
+  <div class="text-xs uppercase tracking-[0.3em] text-amber-300/80">Wikipedia · King of Pop</div>
+  <h1 class="display text-5xl md:text-6xl font-bold mt-3 leading-tight">Michael <span class="grad">Jackson</span></h1>
+  <p class="text-lg text-amber-100/80 mt-4 max-w-3xl">American singer, songwriter and dancer (1958-2009) whose contributions to music, dance, and fashion made him one of the most significant cultural figures of the 20th century. <em>Thriller</em> remains the best-selling album in history.</p>
+  <a href="https://en.wikipedia.org/wiki/Michael_Jackson" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-full bg-amber-500 hover:bg-amber-400 text-stone-900 font-semibold transition">View on Wikipedia →</a>
+</header>
+
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-amber-300/70">Records sold</div><div class="stat-num text-3xl mt-2 grad">~500M</div><div class="text-xs text-amber-100/60 mt-1">solo career estimate</div></div>
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-amber-300/70">Grammys</div><div class="stat-num text-3xl mt-2 grad">13</div><div class="text-xs text-amber-100/60 mt-1">+ Lifetime Achievement</div></div>
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-amber-300/70">Thriller sales</div><div class="stat-num text-3xl mt-2 grad">70M+</div><div class="text-xs text-amber-100/60 mt-1">best-selling album ever</div></div>
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-amber-300/70">Hall of Fame inductions</div><div class="stat-num text-3xl mt-2 grad">2x</div><div class="text-xs text-amber-100/60 mt-1">solo &amp; with Jackson 5</div></div>
+</section>
+
+<section class="grid md:grid-cols-5 gap-4">
+  <div class="glass rounded-3xl p-6 md:col-span-3">
+    <h2 class="display text-2xl font-bold mb-1">Solo studio albums &amp; estimated sales</h2>
+    <p class="text-sm text-amber-100/60 mb-4">Sales in millions, including the gargantuan outlier <em>Thriller</em>.</p>
+    <canvas id="chart-mj" height="170"></canvas>
+  </div>
+  <div class="glass rounded-3xl p-6 md:col-span-2">
+    <h2 class="display text-2xl font-bold mb-3">Signature moves &amp; firsts</h2>
+    <ul class="space-y-3 text-sm">
+      <li class="rounded-xl p-3 bg-stone-900/40 border border-amber-700/20"><div class="font-semibold">Moonwalk · 1983</div><div class="text-amber-100/60">Performed live on the <em>Motown 25</em> TV special.</div></li>
+      <li class="rounded-xl p-3 bg-stone-900/40 border border-amber-700/20"><div class="font-semibold">Thriller video · 1983</div><div class="text-amber-100/60">14-minute mini-film that redefined the music video.</div></li>
+      <li class="rounded-xl p-3 bg-stone-900/40 border border-amber-700/20"><div class="font-semibold">First Black artist on MTV</div><div class="text-amber-100/60">"Billie Jean" broke MTV's de-facto colour line.</div></li>
+      <li class="rounded-xl p-3 bg-stone-900/40 border border-amber-700/20"><div class="font-semibold">Bad World Tour · 1987-89</div><div class="text-amber-100/60">4.4M attendees — record for the time.</div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="grid md:grid-cols-3 gap-4">
+  <div class="glass rounded-3xl p-6 pulse"><h3 class="display text-lg font-bold mb-2">A career arc</h3><p class="text-sm text-amber-100/60 leading-relaxed">From the youngest Jackson 5 brother (1969) to global superstar (1980s) to billion-dollar This Is It comeback that ended with his death in June 2009.</p></div>
+  <div class="glass rounded-3xl p-6"><h3 class="display text-lg font-bold mb-2">Influence</h3><p class="text-sm text-amber-100/60 leading-relaxed">A defining influence on Beyoncé, Bruno Mars, Justin Timberlake, The Weeknd and on K-pop's choreography-first model.</p></div>
+  <div class="glass rounded-3xl p-6"><h3 class="display text-lg font-bold mb-2">Controversies</h3><p class="text-sm text-amber-100/60 leading-relaxed">Allegations of child sexual abuse — denied by Jackson and his estate — have remained a contested part of his legacy.</p></div>
+</section>
+
+<footer class="text-center text-xs text-amber-300/50 pt-2 pb-2">VisualPedia example · data sourced from Wikipedia and standard references</footer>
+
+</div>
+
+<script>
+new Chart(document.getElementById('chart-mj'), {
+  type:'bar',
+  data:{
+    labels:['Got to Be There (72)','Music &amp; Me (73)','Forever, Michael (75)','Off the Wall (79)','Thriller (82)','Bad (87)','Dangerous (91)','HIStory (95)','Invincible (01)'],
+    datasets:[{ label:'Sales (millions)',
+      data:[1.5,1.0,0.8,20,70,35,32,20,10],
+      backgroundColor:'rgba(245,158,11,0.85)', borderRadius:6 }]
+  },
+  options:{
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ ticks:{color:'#fde68a',font:{size:10},maxRotation:50,minRotation:45}, grid:{color:'rgba(255,255,255,0.04)'}},
+      y:{ ticks:{color:'#fde68a'}, grid:{color:'rgba(255,255,255,0.06)'}}
+    }
+  }
+});
+</script>
+</body>
+</html>

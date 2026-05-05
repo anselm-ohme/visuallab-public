@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>BERT 2018 — VisualScholar</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  body { font-family:'Inter',system-ui,sans-serif; background:#06121a; color:#ccfbf1; }
+  .display { font-family:'Space Grotesk',sans-serif; }
+  .glass { background:rgba(8,40,46,.55); backdrop-filter:blur(18px); border:1px solid rgba(45,212,191,.22); }
+  .grad { background:linear-gradient(120deg,#2dd4bf,#60a5fa); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .orb { position:fixed; border-radius:50%; filter:blur(120px); pointer-events:none; z-index:0; opacity:.18 }
+  .stat-num { font-family:'Space Grotesk',sans-serif; font-weight:700; }
+  .mono { font-family:'JetBrains Mono',ui-monospace,monospace; }
+  @keyframes mask-pop { 0%,100% { transform:translateY(0); opacity:1; } 50% { transform:translateY(-4px); opacity:.6; } }
+  .mask { animation: mask-pop 1.6s ease-in-out infinite; }
+</style>
+</head>
+<body class="min-h-screen relative">
+<div class="orb" style="width:520px;height:520px;background:#2dd4bf;top:-180px;right:-160px"></div>
+<div class="orb" style="width:420px;height:420px;background:#60a5fa;bottom:-200px;left:-140px"></div>
+
+<div class="relative z-10 max-w-6xl mx-auto px-6 py-10 space-y-8">
+
+<header class="glass rounded-3xl p-8 md:p-10">
+  <div class="text-xs uppercase tracking-[0.3em] text-teal-300/80">VisualScholar · Bidirectional pre-training</div>
+  <h1 class="display text-4xl md:text-5xl font-bold mt-3 leading-tight"><span class="grad">BERT</span>: Pre-training of Deep Bidirectional Transformers</h1>
+  <p class="text-base text-teal-100/80 mt-4 max-w-3xl"><strong>Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova</strong> · NAACL 2019 · Google AI Language · arXiv:1810.04805</p>
+  <p class="text-base text-teal-100/70 mt-2 max-w-3xl">Trained a Transformer encoder to fill in masked tokens — and showed that the resulting representations could be fine-tuned to set new state-of-the-art on 11 different NLP benchmarks.</p>
+  <div class="mt-6 flex gap-3 flex-wrap">
+    <a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-teal-500 hover:bg-teal-400 text-stone-900 font-semibold transition">arXiv →</a>
+    <span class="px-3 py-1.5 rounded-full bg-teal-900/40 border border-teal-700/30 text-xs text-teal-200">cs.CL</span>
+    <span class="px-3 py-1.5 rounded-full bg-teal-900/40 border border-teal-700/30 text-xs text-teal-200">NAACL Best Paper</span>
+  </div>
+</header>
+
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-teal-300/70">Citations</div><div class="stat-num text-3xl mt-2 grad">130k+</div><div class="text-xs text-teal-100/60 mt-1">most-cited NLP paper</div></div>
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-teal-300/70">BERT-Large params</div><div class="stat-num text-3xl mt-2 grad">340M</div><div class="text-xs text-teal-100/60 mt-1">24 layers, 16 heads</div></div>
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-teal-300/70">Pre-training corpus</div><div class="stat-num text-3xl mt-2 grad">3.3B</div><div class="text-xs text-teal-100/60 mt-1">words (BooksCorpus + Wikipedia)</div></div>
+  <div class="glass rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-teal-300/70">SOTA tasks</div><div class="stat-num text-3xl mt-2 grad">11</div><div class="text-xs text-teal-100/60 mt-1">at publication</div></div>
+</section>
+
+<!-- ANIMATED MLM -->
+<section class="glass rounded-3xl p-6 md:p-8">
+  <h2 class="display text-2xl font-bold mb-2">Masked language modelling</h2>
+  <p class="text-sm text-teal-100/60 mb-6">Randomly mask 15% of tokens; train the model to predict the originals using the entire bidirectional context.</p>
+  <div class="rounded-2xl bg-teal-950/40 border border-teal-700/20 p-5 text-center">
+    <div class="mono text-base md:text-xl text-teal-100">
+      The <span class="text-teal-300">capital</span> of <span class="inline-block bg-teal-500/30 border border-teal-400 rounded px-2 py-0.5 mask">[MASK]</span> is <span class="text-teal-300">Paris</span>.
+    </div>
+    <div class="mt-4 text-xs uppercase tracking-widest text-teal-300/70">model predicts</div>
+    <div class="mono text-2xl text-emerald-300 mt-1">France</div>
+    <div class="text-[11px] text-teal-100/60 mt-3">Bidirectional context — both "capital" before and "Paris" after — disambiguates the answer.</div>
+  </div>
+</section>
+
+<section class="grid md:grid-cols-2 gap-4">
+  <div class="glass rounded-3xl p-6">
+    <h3 class="display text-xl font-bold mb-3">Two pre-training objectives</h3>
+    <ul class="space-y-3 text-sm">
+      <li class="rounded-xl p-3 bg-teal-900/20 border border-teal-700/20"><div class="font-semibold text-teal-200">Masked Language Model</div><div class="text-teal-100/70">15% of tokens replaced with [MASK]; predict the originals.</div></li>
+      <li class="rounded-xl p-3 bg-teal-900/20 border border-teal-700/20"><div class="font-semibold text-teal-200">Next Sentence Prediction</div><div class="text-teal-100/70">Given two sentences, predict if B follows A — for sentence-pair tasks.</div></li>
+    </ul>
+    <h3 class="display text-xl font-bold mt-5 mb-3">Loss formulation</h3>
+    <div class="rounded-xl p-3 bg-teal-900/20 border border-teal-700/20">
+      <div class="text-base">$$\mathcal{L} = \mathcal{L}_{\text{MLM}} + \mathcal{L}_{\text{NSP}}$$</div>
+    </div>
+  </div>
+  <div class="glass rounded-3xl p-6">
+    <h3 class="display text-xl font-bold mb-3">Fine-tune one model, hit every task</h3>
+    <p class="text-sm text-teal-100/60 mb-3">Add a small task-specific head to the pre-trained BERT encoder, fine-tune for a few epochs.</p>
+    <ul class="space-y-2 text-sm">
+      <li class="rounded-xl p-2.5 bg-teal-900/20 border border-teal-700/20"><span class="font-semibold text-teal-200">GLUE benchmark</span> · 80.5 score (+7.6 over previous SOTA)</li>
+      <li class="rounded-xl p-2.5 bg-teal-900/20 border border-teal-700/20"><span class="font-semibold text-teal-200">SQuAD v1.1 F1</span> · 93.2 — first to beat humans</li>
+      <li class="rounded-xl p-2.5 bg-teal-900/20 border border-teal-700/20"><span class="font-semibold text-teal-200">MNLI accuracy</span> · 86.7 (+4.6)</li>
+      <li class="rounded-xl p-2.5 bg-teal-900/20 border border-teal-700/20"><span class="font-semibold text-teal-200">SWAG accuracy</span> · 86.3 (+27.1)</li>
+    </ul>
+  </div>
+</section>
+
+<section class="glass rounded-3xl p-6 md:p-8">
+  <h2 class="display text-2xl font-bold mb-1">GLUE leaderboard before vs after BERT</h2>
+  <p class="text-sm text-teal-100/60 mb-4">Average score across 9 NLU tasks — the BERT moment is the cliff.</p>
+  <canvas id="chart-glue" height="160"></canvas>
+</section>
+
+<footer class="text-center text-xs text-teal-300/50 pt-2 pb-2">VisualScholar example · facts from arXiv 1810.04805 and GLUE leaderboard history</footer>
+
+</div>
+
+<script>
+new Chart(document.getElementById('chart-glue'), {
+  type:'line',
+  data:{
+    labels:['ELMo (Mar 18)','GPT (Jun 18)','BiLSTM+ELMo (Jul 18)','BERT-Base (Oct 18)','BERT-Large (Oct 18)','XLNet (Jun 19)','RoBERTa (Jul 19)','T5 (Oct 19)','Human'],
+    datasets:[{ label:'GLUE average score',
+      data:[68.7,72.8,72.9,79.6,81.9,88.4,88.5,89.7,87.1],
+      borderColor:'#2dd4bf', backgroundColor:'rgba(45,212,191,.18)',
+      fill:true, tension:0.3, borderWidth:3, pointRadius:5, pointBackgroundColor:'#14b8a6'
+    }]
+  },
+  options:{
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ ticks:{color:'#99f6e4',font:{size:10},maxRotation:50,minRotation:45}, grid:{color:'rgba(255,255,255,0.04)'}},
+      y:{ ticks:{color:'#99f6e4'}, grid:{color:'rgba(255,255,255,0.06)'}, suggestedMin:60}
+    }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VisualLab — Animated explainers for academic papers, GitHub repos and more</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <header class="topbar">
+      <button class="brand" id="home-brand" type="button" title="Back to home">
+        <span class="brand-mark">VL</span>
+        <div>
+          <div class="brand-name">VisualLab</div>
+          <div class="brand-tag" id="brand-tag">Animated explainers for academic papers, repos &amp; more</div>
+        </div>
+      </button>
+      <div class="topbar-right">
+        <div class="mode-pill hidden" id="mode-pill"></div>
+        <button class="ghost-btn" id="back-home" type="button">← Switch mode</button>
+      </div>
+    </header>
+
+    <!-- ============================ LANDING ============================ -->
+    <main class="landing" id="view-landing">
+      <div class="landing-inner">
+        <div class="landing-hero">
+          <div class="kicker">Pick a mode</div>
+          <h1 class="landing-title">
+            Turn any academic paper or GitHub repository into a
+            <span class="grad">live, animated explainer</span>.
+          </h1>
+          <p class="landing-sub">
+            VisualLab pulls academic papers from arXiv and Semantic Scholar,
+            and repositories from GitHub, sends them to two NVIDIA-hosted LLMs
+            running in parallel, and streams self-contained HTML dashboards
+            back into your browser. Built for academics who want to understand
+            research and codebases faster — or to present a paper, including
+            their own, in a quick visual format.
+          </p>
+        </div>
+
+        <div class="mode-grid">
+          <button class="mode-card mode-scholar" data-mode="scholar" type="button">
+            <div class="mode-card-glow"></div>
+            <div class="mode-card-head">
+              <div class="mode-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M3 7l9-4 9 4-9 4-9-4Z" />
+                  <path d="M7 9.5V14c0 1.5 2.5 3 5 3s5-1.5 5-3V9.5" />
+                  <path d="M21 7v6" />
+                </svg>
+              </div>
+              <span class="mode-tag">arXiv · Semantic Scholar</span>
+            </div>
+            <h2>VisualScholar</h2>
+            <p>
+              Search arXiv or Semantic Scholar for an academic paper. The PDF is
+              fetched, its text is extracted, and the model produces an
+              interactive, animated explainer with KaTeX equations and SVG
+              process diagrams. Aimed at researchers triaging unfamiliar papers.
+            </p>
+            <div class="mode-meta">
+              <span>● arXiv + Semantic Scholar</span>
+              <span>● Animated process diagrams</span>
+              <span>● KaTeX equations</span>
+            </div>
+            <div class="mode-cta">
+              Open VisualScholar
+              <svg viewBox="0 0 24 24"><path fill="currentColor" d="M13.293 4.293a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1 0 1.414l-6 6a1 1 0 1 1-1.414-1.414L17.586 12H4a1 1 0 1 1 0-2h13.586l-4.293-4.293a1 1 0 0 1 0-1.414Z"/></svg>
+            </div>
+          </button>
+
+          <button class="mode-card mode-repo" data-mode="repo" type="button">
+            <div class="mode-card-glow"></div>
+            <div class="mode-card-head">
+              <div class="mode-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s1.9.1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.6 18.4.5 12 .5Z"/>
+                </svg>
+              </div>
+              <span class="mode-tag">GitHub</span>
+            </div>
+            <h2>VisualRepo</h2>
+            <p>
+              Paste any GitHub repo (<code>owner/name</code> or full URL) and
+              get back an animated 60-second explainer — language breakdown,
+              top contributors, recent activity, and a plain-English README
+              summary. Useful when you stumble across an unfamiliar codebase
+              cited in a paper.
+            </p>
+            <div class="mode-meta">
+              <span>● GitHub REST API</span>
+              <span>● Language doughnut</span>
+              <span>● Commit timeline</span>
+            </div>
+            <div class="mode-cta">
+              Open VisualRepo
+              <svg viewBox="0 0 24 24"><path fill="currentColor" d="M13.293 4.293a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1 0 1.414l-6 6a1 1 0 1 1-1.414-1.414L17.586 12H4a1 1 0 1 1 0-2h13.586l-4.293-4.293a1 1 0 0 1 0-1.414Z"/></svg>
+            </div>
+          </button>
+        </div>
+
+        <!-- Reveal-on-click: extra modes (kept off the main path) -->
+        <div class="more-modes-wrap">
+          <button class="more-modes-toggle" id="more-modes-btn" type="button"
+                  aria-expanded="false" aria-controls="more-modes-grid">
+            <span class="more-modes-line"></span>
+            <span class="more-modes-label">
+              <span class="more-modes-emoji">✨</span>
+              <span class="more-modes-text">More modes</span>
+              <svg class="more-modes-chev" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M5.3 8.3a1 1 0 0 1 1.4 0L12 13.6l5.3-5.3a1 1 0 1 1 1.4 1.4l-6 6a1 1 0 0 1-1.4 0l-6-6a1 1 0 0 1 0-1.4Z"/>
+              </svg>
+            </span>
+            <span class="more-modes-line"></span>
+          </button>
+          <div class="more-modes-grid hidden" id="more-modes-grid" aria-hidden="true">
+            <button class="mode-card mode-pedia" data-mode="pedia" type="button">
+              <div class="mode-card-glow"></div>
+              <div class="mode-card-head">
+                <div class="mode-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M4 5h11a3 3 0 0 1 3 3v11" />
+                    <path d="M4 5v13a2 2 0 0 0 2 2h12" />
+                    <path d="M8 9h6M8 13h4" />
+                  </svg>
+                </div>
+                <span class="mode-tag">Wikipedia</span>
+              </div>
+              <h2>VisualPedia</h2>
+              <p>
+                Search any Wikipedia article and get an encyclopedia-style
+                dashboard — KPIs, charts, image gallery, and a map when the
+                topic has coordinates. Good for the casual "what even is X?"
+                question.
+              </p>
+              <div class="mode-meta">
+                <span>● Wikipedia API</span>
+                <span>● Charts, gallery &amp; map</span>
+              </div>
+              <div class="mode-cta">
+                Open VisualPedia
+                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M13.293 4.293a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1 0 1.414l-6 6a1 1 0 1 1-1.414-1.414L17.586 12H4a1 1 0 1 1 0-2h13.586l-4.293-4.293a1 1 0 0 1 0-1.414Z"/></svg>
+              </div>
+            </button>
+
+            <button class="mode-card mode-art" data-mode="art" type="button">
+              <div class="mode-card-glow"></div>
+              <div class="mode-card-head">
+                <div class="mode-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                    <path d="M4 4h16v16H4z" />
+                    <path d="M4 14l4-4 4 4 3-3 5 5" />
+                    <circle cx="9" cy="8" r="1.5" fill="currentColor" stroke="none"/>
+                  </svg>
+                </div>
+                <span class="mode-tag">Met Museum</span>
+              </div>
+              <h2>VisualArt</h2>
+              <p>
+                Search the Metropolitan Museum's open collection for any
+                artwork and get a museum-quality wall card with a large hero
+                image, an "About this work" essay, and an elegant artist
+                panel. Mostly here because it's pretty.
+              </p>
+              <div class="mode-meta">
+                <span>● Met Museum API</span>
+                <span>● Museum-style typography</span>
+                <span>● 470K open artworks</span>
+              </div>
+              <div class="mode-cta">
+                Open VisualArt
+                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M13.293 4.293a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1 0 1.414l-6 6a1 1 0 1 1-1.414-1.414L17.586 12H4a1 1 0 1 1 0-2h13.586l-4.293-4.293a1 1 0 0 1 0-1.414Z"/></svg>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Auto-cycling preview of real generated dashboards.
+             Sits below the mode cards (incl. the "More modes" reveal) so a
+             user who sees a Pedia/Art preview can scroll back up and find
+             that mode's card without hunting. -->
+        <section class="landing-demo" id="landing-demo">
+          <div class="landing-demo-head">
+            <span class="landing-demo-kicker">Live preview</span>
+            <h3 class="landing-demo-title">
+              See <span class="grad">a real dashboard</span> the tool has produced
+            </h3>
+            <p class="landing-demo-sub">
+              Real outputs from the same pipeline — no screenshots, no mock-ups.
+              The preview rotates through examples from all four modes; click
+              any thumbnail below to jump, or open one in full screen.
+            </p>
+          </div>
+          <div class="landing-demo-stage">
+            <div class="landing-demo-frame-wrap">
+              <iframe id="landing-demo-frame" class="landing-demo-frame"
+                sandbox="allow-scripts allow-popups allow-same-origin"
+                title="Auto-cycling example dashboard"></iframe>
+              <div class="landing-demo-overlay">
+                <span class="landing-demo-pill" id="landing-demo-pill">Loading…</span>
+              </div>
+              <button class="landing-demo-open" id="landing-demo-open" type="button"
+                      title="Open this example fullscreen">
+                Open fullscreen →
+              </button>
+            </div>
+            <div class="landing-demo-thumbs" id="landing-demo-thumbs" role="tablist"
+                 aria-label="Cycle through examples"></div>
+          </div>
+        </section>
+
+        <div class="landing-foot">
+          Powered by NVIDIA NIM · arXiv · Semantic Scholar · GitHub · Wikipedia · The Met
+        </div>
+      </div>
+    </main>
+
+    <!-- ============================ PEDIA MODE ============================ -->
+    <main class="layout hidden" id="view-pedia">
+      <section class="search-panel">
+        <h1 class="hero-title">
+          Turn any <span class="grad">Wikipedia</span> article into a
+          <span class="grad">live dashboard</span>.
+        </h1>
+        <p class="hero-sub">
+          Search a topic, pick an article, and watch the model build a custom
+          visual report in real time.
+        </p>
+
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" class="search-icon" aria-hidden="true">
+            <path fill="currentColor" d="M10 18a8 8 0 1 1 5.293-14.001A8 8 0 0 1 10 18Zm11.707 2.293-3.388-3.388A9.953 9.953 0 0 0 20 10a10 10 0 1 0-3.094 7.226l3.387 3.388a1 1 0 0 0 1.414-1.32Z" />
+          </svg>
+          <input id="pedia-search-input" type="text"
+            placeholder="Search Wikipedia… e.g. Octopus, Marie Curie, Saturn V"
+            autocomplete="off" spellcheck="false" />
+          <button id="pedia-lucky-btn" class="lucky" title="I'm feeling curious">Surprise me</button>
+        </div>
+
+        <div class="model-row">
+          <label for="pedia-model-select">Model</label>
+          <select id="pedia-model-select" class="model-select" aria-label="Choose model"></select>
+        </div>
+        <div class="race-row">
+          <label class="race-toggle">
+            <input type="checkbox" id="pedia-race-toggle" />
+            <span class="race-toggle-track"><span class="race-toggle-thumb"></span></span>
+            <span class="race-toggle-label">
+              Race 2 models
+              <span class="race-toggle-hint">Fastest result wins, both stay as tabs</span>
+            </span>
+          </label>
+          <select id="pedia-model-select-b" class="model-select race-second hidden" aria-label="Second model"></select>
+        </div>
+
+        <div id="pedia-results" class="results"></div>
+      </section>
+
+      <section class="dashboard-panel" id="pedia-dashboard-panel">
+        <div id="pedia-dashboard-toolbar" class="dashboard-toolbar hidden">
+          <button class="toolbar-btn hidden" data-act="share" type="button" title="Copy a shareable link to this dashboard">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 4a3 3 0 1 1 .58 1.78L8.93 9.13a3 3 0 0 1 0 1.74l5.65 3.35a3 3 0 1 1-1.04 1.72L7.9 12.59a3 3 0 1 1 0-3.18l5.64-3.35A3 3 0 0 1 14 4Z"/></svg>
+            <span>Share</span>
+          </button>
+          <button class="toolbar-btn hidden" data-act="download" type="button" title="Download as standalone .html">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 3a1 1 0 1 1 2 0v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 0 1 1.4-1.4L11 12.6V3Zm-6 14a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg>
+            <span>Download</span>
+          </button>
+          <button class="toolbar-btn hidden" data-act="email" type="button" title="Email this dashboard">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm.4 2L12 13l7.6-5H4.4Z"/></svg>
+            <span>Email</span>
+          </button>
+          <button class="toolbar-btn" data-act="back" type="button" title="Return to examples">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.7 5.3a1 1 0 0 1 0 1.4L9.4 12l5.3 5.3a1 1 0 1 1-1.4 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.4 0Z"/></svg>
+            <span>Back</span>
+          </button>
+        </div>
+        <div id="pedia-dashboard-empty" class="dashboard-empty-wrap">
+          <div class="dashboard-empty">
+            <div class="empty-art" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <h2>Pick an article to begin</h2>
+            <p>VisualPedia will fetch the article via the Wikipedia API, send the
+              structured data to your chosen model, and render the resulting HTML
+              dashboard right here.</p>
+          </div>
+          <div class="examples-gallery">
+            <div class="examples-head">
+              <span class="examples-kicker">Examples</span>
+              <h3>10 of the world's most-read Wikipedia articles</h3>
+              <p>Hand-built dashboards in the same style — click any card to view.</p>
+            </div>
+            <div class="examples-grid" id="pedia-examples-grid"></div>
+          </div>
+        </div>
+        <div id="pedia-dashboard-loading" class="dashboard-loading hidden">
+          <div class="loader"></div>
+          <div class="loading-status">
+            <div class="loading-title" id="pedia-loading-title">Generating dashboard…</div>
+            <div class="loading-sub" id="pedia-loading-sub">Fetching article from Wikipedia</div>
+            <div class="stream-meter"><div class="stream-bar" id="pedia-stream-bar"></div></div>
+            <div class="stream-stats" id="pedia-stream-stats">0 chars streamed</div>
+            <div class="loading-info">
+              <span class="loading-info-pill">⏱ Heads-up</span>
+              Generating a dashboard typically takes <strong>3–6 minutes</strong>
+              on the free NVIDIA tier — the more complex the topic, the longer
+              it streams. The page builds itself live as the model generates.
+            </div>
+            <form class="notify-form hidden" id="pedia-notify-form" data-mode="pedia">
+              <label for="pedia-notify-email">📨 Don't want to wait? Email it to me when it's done</label>
+              <div class="notify-row">
+                <input type="email" id="pedia-notify-email" name="email"
+                  placeholder="you@example.com" autocomplete="email" required />
+                <button type="submit" class="notify-btn">Notify me</button>
+              </div>
+              <div class="notify-status" id="pedia-notify-status"></div>
+            </form>
+          </div>
+        </div>
+        <div id="pedia-dashboard-error" class="dashboard-error hidden"></div>
+        <div id="pedia-race-tabs" class="race-tabs hidden" role="tablist"></div>
+        <div id="pedia-streaming-overlay" class="streaming-overlay hidden">
+          <span class="streaming-spinner" aria-hidden="true"></span>
+          <span class="streaming-text">
+            Streaming with <span class="streaming-model"></span>
+          </span>
+          <span class="streaming-count">0 chars</span>
+        </div>
+        <iframe id="pedia-dashboard-frame" class="dashboard-frame hidden"
+          sandbox="allow-scripts allow-popups allow-same-origin"
+          title="Generated VisualPedia dashboard"></iframe>
+      </section>
+    </main>
+
+    <!-- ============================ SCHOLAR MODE ============================ -->
+    <main class="layout hidden" id="view-scholar">
+      <section class="search-panel">
+        <h1 class="hero-title">
+          Turn any <span class="grad">research paper</span> into an
+          <span class="grad">animated explainer</span>.
+        </h1>
+        <p class="hero-sub">
+          Search arXiv or Semantic Scholar by keywords, author, or paper id
+          (e.g. <code>2310.06825</code>). The model receives the abstract plus
+          the extracted PDF text and visualizes the methodology with motion.
+        </p>
+
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" class="search-icon" aria-hidden="true">
+            <path fill="currentColor" d="M10 18a8 8 0 1 1 5.293-14.001A8 8 0 0 1 10 18Zm11.707 2.293-3.388-3.388A9.953 9.953 0 0 0 20 10a10 10 0 1 0-3.094 7.226l3.387 3.388a1 1 0 0 0 1.414-1.32Z" />
+          </svg>
+          <input id="scholar-search-input" type="text"
+            placeholder="Search papers — keywords, author, or paper id"
+            autocomplete="off" spellcheck="false" />
+          <button id="scholar-lucky-btn" class="lucky" title="Random hot paper">Surprise me</button>
+        </div>
+
+        <div class="model-row">
+          <label for="scholar-model-select">Model</label>
+          <select id="scholar-model-select" class="model-select" aria-label="Choose model"></select>
+        </div>
+        <div class="race-row">
+          <label class="race-toggle">
+            <input type="checkbox" id="scholar-race-toggle" />
+            <span class="race-toggle-track"><span class="race-toggle-thumb"></span></span>
+            <span class="race-toggle-label">
+              Race 2 models
+              <span class="race-toggle-hint">Fastest result wins, both stay as tabs</span>
+            </span>
+          </label>
+          <select id="scholar-model-select-b" class="model-select race-second hidden" aria-label="Second model"></select>
+        </div>
+
+        <div class="source-toggle" role="tablist" aria-label="Paper source">
+          <button class="source-tab active" type="button" data-source="arxiv" role="tab" aria-selected="true">
+            <span class="source-tab-name">arXiv</span>
+            <span class="source-tab-sub">Open preprints</span>
+          </button>
+          <button class="source-tab" type="button" data-source="semantic_scholar" role="tab" aria-selected="false">
+            <span class="source-tab-name">Semantic Scholar</span>
+            <span class="source-tab-sub">214M papers · citations · TLDR</span>
+          </button>
+        </div>
+        <div id="scholar-source-hint" class="source-hint"></div>
+
+        <div id="scholar-results" class="results"></div>
+      </section>
+
+      <section class="dashboard-panel" id="scholar-dashboard-panel">
+        <div id="scholar-dashboard-toolbar" class="dashboard-toolbar hidden">
+          <button class="toolbar-btn hidden" data-act="share" type="button" title="Copy a shareable link to this dashboard">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 4a3 3 0 1 1 .58 1.78L8.93 9.13a3 3 0 0 1 0 1.74l5.65 3.35a3 3 0 1 1-1.04 1.72L7.9 12.59a3 3 0 1 1 0-3.18l5.64-3.35A3 3 0 0 1 14 4Z"/></svg>
+            <span>Share</span>
+          </button>
+          <button class="toolbar-btn hidden" data-act="download" type="button" title="Download as standalone .html">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 3a1 1 0 1 1 2 0v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 0 1 1.4-1.4L11 12.6V3Zm-6 14a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg>
+            <span>Download</span>
+          </button>
+          <button class="toolbar-btn hidden" data-act="email" type="button" title="Email this dashboard">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm.4 2L12 13l7.6-5H4.4Z"/></svg>
+            <span>Email</span>
+          </button>
+          <button class="toolbar-btn" data-act="back" type="button" title="Return to examples">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.7 5.3a1 1 0 0 1 0 1.4L9.4 12l5.3 5.3a1 1 0 1 1-1.4 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.4 0Z"/></svg>
+            <span>Back</span>
+          </button>
+        </div>
+        <div id="scholar-dashboard-empty" class="dashboard-empty-wrap">
+          <div class="dashboard-empty">
+            <div class="empty-art" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <h2>Pick a paper to begin</h2>
+            <p>VisualScholar will fetch the paper from arXiv or Semantic Scholar,
+              extract the PDF text, and ask the model to build an animated,
+              interactive explainer with equations and process diagrams.</p>
+          </div>
+          <div class="examples-gallery">
+            <div class="examples-head">
+              <span class="examples-kicker">Examples</span>
+              <h3>10 of the most influential academic papers ever published</h3>
+              <p>Hand-built explainers in the same style — click any card to view.</p>
+            </div>
+            <div class="examples-grid" id="scholar-examples-grid"></div>
+          </div>
+        </div>
+        <div id="scholar-dashboard-loading" class="dashboard-loading hidden">
+          <div class="loader"></div>
+          <div class="loading-status">
+            <div class="loading-title" id="scholar-loading-title">Generating explainer…</div>
+            <div class="loading-sub" id="scholar-loading-sub">Fetching paper from arXiv</div>
+            <div class="stream-meter"><div class="stream-bar" id="scholar-stream-bar"></div></div>
+            <div class="stream-stats" id="scholar-stream-stats">0 chars streamed</div>
+            <div class="loading-info">
+              <span class="loading-info-pill">⏱ Heads-up</span>
+              Building an interactive paper explainer typically takes
+              <strong>3–6 minutes</strong> — papers with long PDFs are slower
+              to digest. The page builds itself live as the model generates.
+            </div>
+            <form class="notify-form hidden" id="scholar-notify-form" data-mode="scholar">
+              <label for="scholar-notify-email">📨 Don't want to wait? Email it to me when it's done</label>
+              <div class="notify-row">
+                <input type="email" id="scholar-notify-email" name="email"
+                  placeholder="you@example.com" autocomplete="email" required />
+                <button type="submit" class="notify-btn">Notify me</button>
+              </div>
+              <div class="notify-status" id="scholar-notify-status"></div>
+            </form>
+          </div>
+        </div>
+        <div id="scholar-dashboard-error" class="dashboard-error hidden"></div>
+        <div id="scholar-race-tabs" class="race-tabs hidden" role="tablist"></div>
+        <div id="scholar-streaming-overlay" class="streaming-overlay hidden">
+          <span class="streaming-spinner" aria-hidden="true"></span>
+          <span class="streaming-text">
+            Streaming with <span class="streaming-model"></span>
+          </span>
+          <span class="streaming-count">0 chars</span>
+        </div>
+        <iframe id="scholar-dashboard-frame" class="dashboard-frame hidden"
+          sandbox="allow-scripts allow-popups allow-same-origin"
+          title="Generated VisualScholar dashboard"></iframe>
+      </section>
+    </main>
+
+    <!-- ============================ REPO MODE ============================ -->
+    <main class="layout hidden" id="view-repo">
+      <section class="search-panel">
+        <h1 class="hero-title">
+          Turn any <span class="grad">GitHub repo</span> into a
+          <span class="grad">60-second explainer</span>.
+        </h1>
+        <p class="hero-sub">
+          Paste a repo (e.g. <code>vercel/next.js</code> or a full GitHub URL),
+          or search by keyword. The model receives the repo metadata, language
+          breakdown, top contributors, recent commits and README excerpt, then
+          builds an animated dashboard.
+        </p>
+
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" class="search-icon" aria-hidden="true">
+            <path fill="currentColor" d="M10 18a8 8 0 1 1 5.293-14.001A8 8 0 0 1 10 18Zm11.707 2.293-3.388-3.388A9.953 9.953 0 0 0 20 10a10 10 0 1 0-3.094 7.226l3.387 3.388a1 1 0 0 0 1.414-1.32Z" />
+          </svg>
+          <input id="repo-search-input" type="text"
+            placeholder="owner/repo, GitHub URL, or keywords"
+            autocomplete="off" spellcheck="false" />
+          <button id="repo-lucky-btn" class="lucky" title="Random famous repo">Surprise me</button>
+        </div>
+
+        <div class="model-row">
+          <label for="repo-model-select">Model</label>
+          <select id="repo-model-select" class="model-select" aria-label="Choose model"></select>
+        </div>
+        <div class="race-row">
+          <label class="race-toggle">
+            <input type="checkbox" id="repo-race-toggle" />
+            <span class="race-toggle-track"><span class="race-toggle-thumb"></span></span>
+            <span class="race-toggle-label">
+              Race 2 models
+              <span class="race-toggle-hint">Fastest result wins, both stay as tabs</span>
+            </span>
+          </label>
+          <select id="repo-model-select-b" class="model-select race-second hidden" aria-label="Second model"></select>
+        </div>
+
+        <div id="repo-source-hint" class="source-hint"></div>
+        <div id="repo-results" class="results"></div>
+      </section>
+
+      <section class="dashboard-panel" id="repo-dashboard-panel">
+        <div id="repo-dashboard-toolbar" class="dashboard-toolbar hidden">
+          <button class="toolbar-btn hidden" data-act="share" type="button" title="Copy a shareable link to this dashboard">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 4a3 3 0 1 1 .58 1.78L8.93 9.13a3 3 0 0 1 0 1.74l5.65 3.35a3 3 0 1 1-1.04 1.72L7.9 12.59a3 3 0 1 1 0-3.18l5.64-3.35A3 3 0 0 1 14 4Z"/></svg>
+            <span>Share</span>
+          </button>
+          <button class="toolbar-btn hidden" data-act="download" type="button" title="Download as standalone .html">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 3a1 1 0 1 1 2 0v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 0 1 1.4-1.4L11 12.6V3Zm-6 14a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg>
+            <span>Download</span>
+          </button>
+          <button class="toolbar-btn hidden" data-act="email" type="button" title="Email this dashboard">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm.4 2L12 13l7.6-5H4.4Z"/></svg>
+            <span>Email</span>
+          </button>
+          <button class="toolbar-btn" data-act="back" type="button" title="Return to results">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.7 5.3a1 1 0 0 1 0 1.4L9.4 12l5.3 5.3a1 1 0 1 1-1.4 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.4 0Z"/></svg>
+            <span>Back</span>
+          </button>
+        </div>
+        <div id="repo-dashboard-empty" class="dashboard-empty-wrap">
+          <div class="dashboard-empty">
+            <div class="empty-art" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <h2>Pick a repository to begin</h2>
+            <p>VisualRepo will fetch the repo via the GitHub API, gather the
+              top contributors, recent commits and README excerpt, and ask the
+              model to build an animated explainer.</p>
+            <p class="dashboard-empty-hint">Try <button class="inline-link" data-repo="facebook/react" type="button">facebook/react</button>,
+              <button class="inline-link" data-repo="huggingface/transformers" type="button">huggingface/transformers</button>,
+              or <button class="inline-link" data-repo="ggerganov/llama.cpp" type="button">ggerganov/llama.cpp</button>.</p>
+          </div>
+          <div class="examples-gallery">
+            <div class="examples-head">
+              <span class="examples-kicker">Examples</span>
+              <h3>10 of the most-starred GitHub projects</h3>
+              <p>Hand-built dashboards in the same style — click any card to view.</p>
+            </div>
+            <div class="examples-grid" id="repo-examples-grid"></div>
+          </div>
+        </div>
+        <div id="repo-dashboard-loading" class="dashboard-loading hidden">
+          <div class="loader"></div>
+          <div class="loading-status">
+            <div class="loading-title" id="repo-loading-title">Generating dashboard…</div>
+            <div class="loading-sub" id="repo-loading-sub">Fetching repository from GitHub</div>
+            <div class="stream-meter"><div class="stream-bar" id="repo-stream-bar"></div></div>
+            <div class="stream-stats" id="repo-stream-stats">0 chars streamed</div>
+            <div class="loading-info">
+              <span class="loading-info-pill">⏱ Heads-up</span>
+              Building a repo explainer typically takes <strong>3–6 minutes</strong>
+              — repos with very long READMEs are slower. The page builds itself
+              live as the model generates.
+            </div>
+            <form class="notify-form hidden" id="repo-notify-form" data-mode="repo">
+              <label for="repo-notify-email">📨 Don't want to wait? Email it to me when it's done</label>
+              <div class="notify-row">
+                <input type="email" id="repo-notify-email" name="email"
+                  placeholder="you@example.com" autocomplete="email" required />
+                <button type="submit" class="notify-btn">Notify me</button>
+              </div>
+              <div class="notify-status" id="repo-notify-status"></div>
+            </form>
+          </div>
+        </div>
+        <div id="repo-dashboard-error" class="dashboard-error hidden"></div>
+        <div id="repo-race-tabs" class="race-tabs hidden" role="tablist"></div>
+        <div id="repo-streaming-overlay" class="streaming-overlay hidden">
+          <span class="streaming-spinner" aria-hidden="true"></span>
+          <span class="streaming-text">
+            Streaming with <span class="streaming-model"></span>
+          </span>
+          <span class="streaming-count">0 chars</span>
+        </div>
+        <iframe id="repo-dashboard-frame" class="dashboard-frame hidden"
+          sandbox="allow-scripts allow-popups allow-same-origin"
+          title="Generated VisualRepo dashboard"></iframe>
+      </section>
+    </main>
+
+    <!-- ============================ ART MODE ============================ -->
+    <main class="layout hidden" id="view-art">
+      <section class="search-panel">
+        <h1 class="hero-title">
+          Turn any <span class="grad">Met Museum artwork</span> into a
+          <span class="grad">museum wall card</span>.
+        </h1>
+        <p class="hero-sub">
+          Search the Metropolitan Museum's open collection of 470,000 artworks.
+          The model receives the metadata and image and composes a museum-
+          quality dashboard with the artwork as the hero.
+        </p>
+
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" class="search-icon" aria-hidden="true">
+            <path fill="currentColor" d="M10 18a8 8 0 1 1 5.293-14.001A8 8 0 0 1 10 18Zm11.707 2.293-3.388-3.388A9.953 9.953 0 0 0 20 10a10 10 0 1 0-3.094 7.226l3.387 3.388a1 1 0 0 0 1.414-1.32Z" />
+          </svg>
+          <input id="art-search-input" type="text"
+            placeholder="Artist, subject, period — e.g. Van Gogh sunflowers, Edo period"
+            autocomplete="off" spellcheck="false" />
+          <button id="art-lucky-btn" class="lucky" title="Random masterpiece">Surprise me</button>
+        </div>
+
+        <div class="model-row">
+          <label for="art-model-select">Model</label>
+          <select id="art-model-select" class="model-select" aria-label="Choose model"></select>
+        </div>
+        <div class="race-row">
+          <label class="race-toggle">
+            <input type="checkbox" id="art-race-toggle" />
+            <span class="race-toggle-track"><span class="race-toggle-thumb"></span></span>
+            <span class="race-toggle-label">
+              Race 2 models
+              <span class="race-toggle-hint">Fastest result wins, both stay as tabs</span>
+            </span>
+          </label>
+          <select id="art-model-select-b" class="model-select race-second hidden" aria-label="Second model"></select>
+        </div>
+
+        <div id="art-results" class="results"></div>
+      </section>
+
+      <section class="dashboard-panel" id="art-dashboard-panel">
+        <div id="art-dashboard-toolbar" class="dashboard-toolbar hidden">
+          <button class="toolbar-btn hidden" data-act="share" type="button" title="Copy a shareable link to this dashboard">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 4a3 3 0 1 1 .58 1.78L8.93 9.13a3 3 0 0 1 0 1.74l5.65 3.35a3 3 0 1 1-1.04 1.72L7.9 12.59a3 3 0 1 1 0-3.18l5.64-3.35A3 3 0 0 1 14 4Z"/></svg>
+            <span>Share</span>
+          </button>
+          <button class="toolbar-btn hidden" data-act="download" type="button" title="Download as standalone .html">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 3a1 1 0 1 1 2 0v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 0 1 1.4-1.4L11 12.6V3Zm-6 14a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg>
+            <span>Download</span>
+          </button>
+          <button class="toolbar-btn hidden" data-act="email" type="button" title="Email this dashboard">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm.4 2L12 13l7.6-5H4.4Z"/></svg>
+            <span>Email</span>
+          </button>
+          <button class="toolbar-btn" data-act="back" type="button" title="Return to results">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.7 5.3a1 1 0 0 1 0 1.4L9.4 12l5.3 5.3a1 1 0 1 1-1.4 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.4 0Z"/></svg>
+            <span>Back</span>
+          </button>
+        </div>
+        <div id="art-dashboard-empty" class="dashboard-empty-wrap">
+          <div class="dashboard-empty">
+            <div class="empty-art" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <h2>Pick an artwork to begin</h2>
+            <p>VisualArt will fetch the object via the Met Museum's open API,
+              then compose a museum-style wall card with the artwork as the
+              hero image and an essay about the work.</p>
+          </div>
+          <div class="examples-gallery">
+            <div class="examples-head">
+              <span class="examples-kicker">Examples</span>
+              <h3>10 of the Met's most-loved masterpieces</h3>
+              <p>Hand-built dashboards in the same style — click any card to view.</p>
+            </div>
+            <div class="examples-grid" id="art-examples-grid"></div>
+          </div>
+        </div>
+        <div id="art-dashboard-loading" class="dashboard-loading hidden">
+          <div class="loader"></div>
+          <div class="loading-status">
+            <div class="loading-title" id="art-loading-title">Generating dashboard…</div>
+            <div class="loading-sub" id="art-loading-sub">Fetching artwork from the museum</div>
+            <div class="stream-meter"><div class="stream-bar" id="art-stream-bar"></div></div>
+            <div class="stream-stats" id="art-stream-stats">0 chars streamed</div>
+            <div class="loading-info">
+              <span class="loading-info-pill">⏱ Heads-up</span>
+              Building an artwork dashboard typically takes
+              <strong>3–6 minutes</strong>. The page builds itself live as the
+              model generates.
+            </div>
+            <form class="notify-form hidden" id="art-notify-form" data-mode="art">
+              <label for="art-notify-email">📨 Don't want to wait? Email it to me when it's done</label>
+              <div class="notify-row">
+                <input type="email" id="art-notify-email" name="email"
+                  placeholder="you@example.com" autocomplete="email" required />
+                <button type="submit" class="notify-btn">Notify me</button>
+              </div>
+              <div class="notify-status" id="art-notify-status"></div>
+            </form>
+          </div>
+        </div>
+        <div id="art-dashboard-error" class="dashboard-error hidden"></div>
+        <div id="art-race-tabs" class="race-tabs hidden" role="tablist"></div>
+        <div id="art-streaming-overlay" class="streaming-overlay hidden">
+          <span class="streaming-spinner" aria-hidden="true"></span>
+          <span class="streaming-text">
+            Streaming with <span class="streaming-model"></span>
+          </span>
+          <span class="streaming-count">0 chars</span>
+        </div>
+        <iframe id="art-dashboard-frame" class="dashboard-frame hidden"
+          sandbox="allow-scripts allow-popups allow-same-origin"
+          title="Generated VisualArt dashboard"></iframe>
+      </section>
+    </main>
+
+    <footer class="site-foot">
+      Built by <strong>Anselm Ohme</strong> · Questions or feedback?
+      <a href="mailto:aohme@escp.eu">aohme@escp.eu</a>
+    </footer>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

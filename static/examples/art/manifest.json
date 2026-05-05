@@ -1,0 +1,84 @@
+{
+  "items": [
+    {
+      "slug": "van-gogh-wheat-field",
+      "title": "Wheat Field with Cypresses",
+      "blurb": "Van Gogh's swirling Provence landscape — one of three closely-related canvases.",
+      "accent": "#d4a373",
+      "year": 1889,
+      "authors": "Vincent van Gogh"
+    },
+    {
+      "slug": "vermeer-young-woman-water-pitcher",
+      "title": "Young Woman with a Water Pitcher",
+      "blurb": "An early-1660s Vermeer — the first work by him to enter an American museum.",
+      "accent": "#94a3b8",
+      "year": 1662,
+      "authors": "Johannes Vermeer"
+    },
+    {
+      "slug": "sargent-madame-x",
+      "title": "Madame X (Madame Pierre Gautreau)",
+      "blurb": "The portrait that scandalized the 1884 Paris Salon and made Sargent's career.",
+      "accent": "#dc2626",
+      "year": 1884,
+      "authors": "John Singer Sargent"
+    },
+    {
+      "slug": "hokusai-great-wave",
+      "title": "Under the Wave off Kanagawa (The Great Wave)",
+      "blurb": "The most reproduced image in art history — Hokusai's towering wave.",
+      "accent": "#0ea5e9",
+      "year": 1831,
+      "authors": "Katsushika Hokusai"
+    },
+    {
+      "slug": "rembrandt-aristotle-with-homer",
+      "title": "Aristotle with a Bust of Homer",
+      "blurb": "Rembrandt's meditation on knowledge and worldly success — the most expensive painting in the world when the Met bought it in 1961.",
+      "accent": "#fbbf24",
+      "year": 1653,
+      "authors": "Rembrandt (Rembrandt van Rijn)"
+    },
+    {
+      "slug": "bruegel-harvesters",
+      "title": "The Harvesters",
+      "blurb": "August panel from Bruegel's revolutionary cycle of the seasons.",
+      "accent": "#ca8a04",
+      "year": 1565,
+      "authors": "Pieter Bruegel the Elder"
+    },
+    {
+      "slug": "klimt-mada-primavesi",
+      "title": "Mäda Primavesi",
+      "blurb": "Klimt's vivid 1912-13 portrait of nine-year-old Mäda Primavesi.",
+      "accent": "#a855f7",
+      "year": 1913,
+      "authors": "Gustav Klimt"
+    },
+    {
+      "slug": "caravaggio-denial-saint-peter",
+      "title": "The Denial of Saint Peter",
+      "blurb": "One of Caravaggio's last paintings — three figures, two pointing fingers.",
+      "accent": "#f59e0b",
+      "year": 1610,
+      "authors": "Caravaggio (Michelangelo Merisi)"
+    },
+    {
+      "slug": "leutze-washington-crossing-delaware",
+      "title": "Washington Crossing the Delaware",
+      "blurb": "The 12-foot-tall icon of American national mythology, painted in Düsseldorf.",
+      "accent": "#3b82f6",
+      "year": 1851,
+      "authors": "Emanuel Leutze"
+    },
+    {
+      "slug": "degas-dance-class",
+      "title": "The Dance Class",
+      "blurb": "Degas at the Paris Opéra — a rehearsal frozen between motion and rest.",
+      "accent": "#ec4899",
+      "year": 1874,
+      "authors": "Edgar Degas"
+    }
+  ]
+}

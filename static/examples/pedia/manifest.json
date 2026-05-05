@@ -1,0 +1,14 @@
+{
+  "items": [
+    { "slug": "united-states", "title": "United States", "blurb": "Federal republic of 50 states across North America", "accent": "#3b82f6", "year": "1776" },
+    { "slug": "albert-einstein", "title": "Albert Einstein", "blurb": "Theoretical physicist who reshaped modern science", "accent": "#a855f7", "year": "1879" },
+    { "slug": "leonardo-da-vinci", "title": "Leonardo da Vinci", "blurb": "Renaissance polymath: art, science, engineering", "accent": "#eab308", "year": "1452" },
+    { "slug": "the-beatles", "title": "The Beatles", "blurb": "Liverpool quartet that rewrote popular music", "accent": "#fb923c", "year": "1960" },
+    { "slug": "chatgpt", "title": "ChatGPT", "blurb": "AI chatbot that brought LLMs to the mainstream", "accent": "#10b981", "year": "2022" },
+    { "slug": "elizabeth-ii", "title": "Elizabeth II", "blurb": "Britain's longest-reigning monarch (1952-2022)", "accent": "#ec4899", "year": "1926" },
+    { "slug": "michael-jackson", "title": "Michael Jackson", "blurb": "King of Pop · best-selling album in history", "accent": "#f59e0b", "year": "1958" },
+    { "slug": "apple-inc", "title": "Apple Inc.", "blurb": "Garage start-up turned first $3-trillion company", "accent": "#94a3b8", "year": "1976" },
+    { "slug": "olympic-games", "title": "Olympic Games", "blurb": "Global sporting event with 3,000 years of history", "accent": "#06b6d4", "year": "-776" },
+    { "slug": "cleopatra", "title": "Cleopatra", "blurb": "Last active ruler of the Ptolemaic Kingdom of Egypt", "accent": "#14b8a6", "year": "-69" }
+  ]
+}
